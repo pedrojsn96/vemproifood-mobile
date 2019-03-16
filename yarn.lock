@@ -5233,6 +5233,11 @@ react-is@^16.6.1, react-is@^16.8.1, react-is@^16.8.4:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.8.4.tgz#90f336a68c3a29a096a3d648ab80e87ec61482a2"
   integrity sha512-PVadd+WaUDOAciICm/J1waJaSvgq+4rHE/K70j0PFqKhkTBsPv/82UGQJNXAngz1fOQLLxI6z1sEDmJDQhCTAA==
 
+react-native-device-info@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-1.0.0.tgz#f1b2da9ed77439abf07d9eee5f476645639c3d23"
+  integrity sha512-9ch8BAnQxodfIGfzs8rDLYMYeO8PuN01Mro1MTIbUt8kcPez6HdqeE10sTZIzHTDMLtqeAD8LBvxWzu0Kt7PqA==
+
 react-native-dismiss-keyboard@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/react-native-dismiss-keyboard/-/react-native-dismiss-keyboard-1.0.0.tgz#32886242b3f2317e121f3aeb9b0a585e2b879b49"
