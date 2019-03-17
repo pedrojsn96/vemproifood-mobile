@@ -60,5 +60,14 @@ export default StyleSheet.create({
 	},
 	wrapperFoodImg: {
 		...weatherDetailScreenMetrics.wrapperFoodImg
+	},
+	wrapperButton: {
+		...weatherDetailScreenMetrics.wrapperButton,
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	buttonIfoodStyle: {
+		...weatherDetailScreenMetrics.buttonIfoodStyle
 	}
 });

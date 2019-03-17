@@ -1,128 +1,117 @@
 import React, { Component } from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
-import { View, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 // Styles
 import styles from './Styles/ButtonStyles';
 
 class Button extends Component {
-	_renderLabelButton(enabled, label) {
-		const { labelButtonStyle, labelDisabledStyle } = this.props;
+  constructor(props) {
+    super(props);
 
-		if (enabled) {
-			return (
-				<Text style={[styles.buttonLabel, labelButtonStyle]}>{label}</Text>
-			);
-		} else {
-			return (
-				<Text
-					style={[
-						styles.buttonLabelDisabled,
-						labelButtonStyle,
-						labelDisabledStyle
-					]}
-				>
-					{label}
-				</Text>
-			);
-		}
-	}
+    this.state = {};
+  }
 
-	_renderLoadingButton() {
-		const { loadingColor } = this.props;
+  /**
+   * render the Button
+   * @author samuelmatias
+   * @method _renderButton
+   * @param none
+   * @return {func} render
+   */
+  _renderButton = () => {
+    const {
+      onPress,
+      isDisabled,
+      buttonContainer,
+      buttonStyle,
+      buttonLabelStyle,
+      buttonLabel,
+      isAbsolute
+    } = this.props;
+    const {} = this.state;
+    const chooseButtonStyle = isAbsolute
+      ? styles.containerButtonAbsolute
+      : styles.containerButton;
+    return (
+      <View style={[chooseButtonStyle, buttonContainer]}>
+        <TouchableOpacity
+          style={[styles.buttonStyle, buttonStyle]}
+          onPress={() => onPress()}
+          disabled={isDisabled}
+        >
+          <Text style={[styles.buttonLabelStyle, buttonLabelStyle]}>
+            {buttonLabel}
+          </Text>
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
-		return (
-			<View style={styles.loadingButton}>
-				{loadingColor ? (
-					<ActivityIndicator color={loadingColor} />
-				) : (
-					<ActivityIndicator />
-				)}
-			</View>
-		);
-	}
-
-	render() {
-		const {
-			full,
-			labelButton,
-			loadingButton,
-			enabledButton,
-			squareButton,
-			invalidButton,
-			onPress,
-			buttonStyle,
-			buttonDisabledStyle
-		} = this.props;
-
-		return (
-			<TouchableOpacity
-				style={[
-					invalidButton ? styles.invalidButton : null,
-					squareButton ? styles.squareButton : null,
-					full ? styles.fullButton : null,
-					buttonStyle,
-					enabledButton
-						? [styles.button, buttonStyle]
-						: [styles.buttonDisabled, buttonDisabledStyle]
-				]}
-				disabled={enabledButton && !loadingButton ? false : true}
-				onPress={loadingButton === true ? () => {} : onPress}
-			>
-				{loadingButton === true
-					? this._renderLoadingButton()
-					: this._renderLabelButton(enabledButton, labelButton)}
-
-				{loadingButton ? null : this.props.children}
-			</TouchableOpacity>
-		);
-	}
+  render() {
+    return this._renderButton();
+  }
 }
 
 Button.defaultProps = {
-	full: false,
-	labelButton: 'Button',
-	labelButtonStyle: null,
-	loadingButton: false,
-	enabledButton: true,
-	buttonStyle: null,
-	squareButton: false,
-	invalidButton: false,
-	onPress: () => {},
-	loadingColor: null,
-	labelDisabledStyle: {},
-	buttonDisabledStyle: {}
+  /**
+   *(PropsTypes)
+   *imageProps: Images.iconBlankStateTwo,
+   *boolProps: false,
+   *nullProps: null,
+   *stringProps: '',
+   *funcProps: () => {},
+   *numProps: 2,
+   */
+  onPress: () => {},
+  isDisabled: false,
+  buttonContainer: styles.containerButton,
+  buttonStyle: styles.buttonStyle,
+  buttonLabelStyle: styles.buttonLabelStyle,
+  buttonLabel: 'Enter',
+  isAbsolute: false
 };
 
 Button.propTypes = {
-	full: PropTypes.bool.isRequired,
-	labelButton: PropTypes.string.isRequired,
-	labelButtonStyle: PropTypes.oneOfType([
-		PropTypes.object,
-		PropTypes.number,
-		PropTypes.array
-	]),
-	labelDisabledStyle: PropTypes.oneOfType([
-		PropTypes.object,
-		PropTypes.number,
-		PropTypes.array
-	]),
-	buttonStyle: PropTypes.oneOfType([
-		PropTypes.object,
-		PropTypes.number,
-		PropTypes.array
-	]),
-	buttonDisabledStyle: PropTypes.oneOfType([
-		PropTypes.object,
-		PropTypes.number,
-		PropTypes.array
-	]),
-	loadingButton: PropTypes.bool.isRequired,
-	enabledButton: PropTypes.bool.isRequired,
-	squareButton: PropTypes.bool.isRequired,
-	invalidButton: PropTypes.bool.isRequired,
-	onPress: PropTypes.func.isRequired,
-	loadingColor: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  /**
+   *(used for some props with any type)
+   *  anyType: PropTypes.any
+   *(used to boolean props)
+   *  boolType: PropTypes.bool
+   *(used to stirng props)
+   *  stringType: PropTypes.string
+   *(user to number props)
+   *  numberProps: PropTypes.number
+   *(used to func props (onPress, overlay, etc.))
+   *  funcType: PropTypes.func
+   *(used to styles props)
+   *  objectType: PropTypes.oneOfType([
+      PropTypes.object,
+      PropTypes.number,
+      PropTypes.array
+    ])
+   *(used to images(url/images on project))
+   *  imageType: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
+   */
+  onPress: PropTypes.func,
+  isDisabled: PropTypes.bool,
+  buttonContainer: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ]),
+  buttonStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ]),
+  buttonLabelStyle: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.number,
+    PropTypes.array
+  ]),
+  buttonLabel: PropTypes.string,
+  isAbsolute: PropTypes.bool
 };
 
 export default Button;

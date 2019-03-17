@@ -226,6 +226,25 @@ const metrics = {
 		},
 		wrapperFoodImg: {
 			paddingLeft: size(10)
+		},
+		wrapperButton: {
+			marginTop: size(20)
+		},
+		buttonIfoodStyle: {
+			borderRadius: size(5)
+		}
+	},
+	/**
+	 *buttonComponentMetrics
+	 */
+	buttonComponentMetrics: {
+		containerButton: {
+			width: pw(100),
+			marginBottom: size(14)
+		},
+		buttonStyle: {
+			height: size(45),
+			width: pw(75)
 		}
 	}
 };

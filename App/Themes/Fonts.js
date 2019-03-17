@@ -136,6 +136,15 @@ const style = {
 			fontFamily: type.avenir.heavy,
 			fontSize: size.regularMinus
 		}
+	},
+	/**
+	 * buttonComponentFonts
+	 */
+	buttonComponentFonts: {
+		buttonLabel: {
+			fontFamily: type.avenir.heavy,
+			fontSize: size.medium
+		}
 	}
 };
 

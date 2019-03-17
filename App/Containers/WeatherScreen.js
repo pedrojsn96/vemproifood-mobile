@@ -80,16 +80,12 @@ class WeatherScreen extends Component {
 	 * @return {state} totalData
 	 */
 	getTotalCnt = async () => {
-		await axios
-			.get(
-				'http://api.openweathermap.org/data/2.5/forecast?q=Campinas,br&appid=a67ef818d8c8e3945f7eee5f541c47e5'
-			)
-			.then(response => {
-				this.setState({
-					totalData: response.data.cnt
-				});
-				this.loadData();
+		await axios.get(baseURL).then(response => {
+			this.setState({
+				totalData: response.data.cnt
 			});
+			this.loadData();
+		});
 	};
 
 	/**

@@ -10,7 +10,7 @@ import moment from 'moment';
 
 // Components
 import { CardItem } from '../Components/';
-import { SpinnerOverlay } from '../Components/Common';
+import { SpinnerOverlay, Button } from '../Components/Common';
 
 // Utils
 import { Translate } from '../Utils/';
@@ -144,6 +144,13 @@ class WeatherDetailScreen extends Component {
 											resizeMode="stretch"
 										/>
 									</View>
+								</View>
+								<View style={styles.wrapperButton}>
+									<Button
+										buttonLabel={'Comprar no iFood'}
+										buttonStyle={styles.buttonIfoodStyle}
+										onPress={() => {}}
+									/>
 								</View>
 							</View>
 						</View>
