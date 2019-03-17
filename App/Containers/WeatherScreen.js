@@ -18,7 +18,7 @@ import RNLocation from 'react-native-location';
 
 // Components
 import { CardItem } from '../Components/';
-import { SpinnerOverlay } from '../Components/Common';
+import { LoadingSpinner } from '../Components/Common';
 
 // Utils
 import { Translate } from '../Utils/';
@@ -76,6 +76,12 @@ class WeatherScreen extends Component {
 		this.init();
 	}
 
+	/**
+	 * init the necessaries functions
+	 * @author samuelmataraso
+	 * @method init
+	 * @return func
+	 */
 	async init() {
 		const locationPermissionGranted = await this.askForLocation();
 		if (locationPermissionGranted) {
@@ -103,6 +109,12 @@ class WeatherScreen extends Component {
 			}, 3000);
 	}
 
+	/**
+	 * asking for geolocation permissions
+	 * @author samuelmataraso
+	 * @method askForLocation
+	 * @return permissions
+	 */
 	async askForLocation() {
 		this.setState({ requestingGeolocation: true });
 		return RNLocation.requestPermission({
@@ -239,7 +251,10 @@ class WeatherScreen extends Component {
 		if (!openWeather) {
 			return (
 				<View style={styles.wrapper}>
-					<SpinnerOverlay visible={true} />
+					<LoadingSpinner
+						text="Carregando Informações"
+						backgroundColor={Colors.white}
+					/>
 				</View>
 			);
 		} else {

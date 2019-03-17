@@ -9,10 +9,12 @@ import CenterModal from './CenterModal';
 import FullModal from './FullModal';
 import Icon from './Icon';
 import SpinnerOverlay from './SpinnerOverlay';
+import LoadingSpinner from './LoadingSpinner';
 
 export {
-	SpinnerOverlay,
 	Button,
+	SpinnerOverlay,
+	LoadingSpinner,
 	Card,
 	CardSection,
 	Header,

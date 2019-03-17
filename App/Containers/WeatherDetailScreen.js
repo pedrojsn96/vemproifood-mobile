@@ -50,7 +50,8 @@ class WeatherDetailScreen extends Component {
 			weather: '',
 			descWeather: '',
 			recommendedDish: '',
-			linkRecommendedDish: ''
+			linkRecommendedDish: '',
+			loading: false
 		};
 	}
 
@@ -58,6 +59,14 @@ class WeatherDetailScreen extends Component {
 		const { navigation } = this.props;
 		const { state } = navigation;
 		const { params } = state;
+		this.setState({
+			loading: true
+		});
+		setTimeout(() => {
+			this.setState({
+				loading: false
+			});
+		}, 2300);
 		this.setState({
 			place: params && params.place ? params.place : 'Não informado.',
 			lat: params && params.lat ? params.lat : '-22.9056',
@@ -80,12 +89,13 @@ class WeatherDetailScreen extends Component {
 			weather,
 			descWeather,
 			recommendedDish,
-			linkRecommendedDish
+			linkRecommendedDish,
+			loading
 		} = this.state;
 		return (
 			<ScrollView style={styles.container}>
 				<View style={styles.wrapper}>
-					<SpinnerOverlay visible={false} />
+					<SpinnerOverlay visible={loading} />
 					<View>
 						<View style={styles.wrapperInfo}>
 							<View>
