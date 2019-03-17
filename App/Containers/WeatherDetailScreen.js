@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View, FlatList } from 'react-native';
+import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native';
 
 // Themes
 import { Images } from '../Themes';
@@ -16,11 +16,15 @@ import { SpinnerOverlay } from '../Components/Common';
 import { Translate } from '../Utils/';
 
 // Styles
-import styles from './Styles/WeatherScreenStyles';
+import styles from './Styles/WeatherDetailScreenStyles';
 
-class WeatherScreen extends Component {
+class WeatherDetailScreen extends Component {
 	static navigationOptions = ({ navigation }) => ({
-		headerTitle: <Text style={styles.headerLabelStyle}>{'Clima'}</Text>,
+		headerTitle: (
+			<Text style={[styles.headerTitle, styles.headerTitleMargin]}>
+				{'Detalhes'}
+			</Text>
+		),
 		headerLeft: (
 			<TouchableOpacity
 				style={styles.wrapperHeaderLeft}
@@ -30,7 +34,7 @@ class WeatherScreen extends Component {
 			>
 				<Image
 					style={styles.iconHeader}
-					source={Images.iconArrowLeft}
+					source={Images.iconArrowLeftWhite}
 					resizeMode={'contain'}
 				/>
 			</TouchableOpacity>
@@ -39,53 +43,115 @@ class WeatherScreen extends Component {
 
 	constructor(props) {
 		super(props);
-
 		this.state = {
-			openWeather: null
+			place: '',
+			lat: '',
+			lon: '',
+			weather: '',
+			descWeather: '',
+			recommendedDish: '',
+			linkRecommendedDish: ''
 		};
 	}
 
 	componentDidMount() {
-		this.loadData();
+		const { navigation } = this.props;
+		const { state } = navigation;
+		const { params } = state;
+		this.setState({
+			place: params && params.place ? params.place : 'Não informado.',
+			lat: params && params.lat ? params.lat : '-22.9056',
+			lon: params && params.lon ? params.lon : '-47.0609',
+			weather: params && params.weather ? params.weather : 'Não informado.',
+			descWeather:
+				params && params.descWeather ? params.descWeather : 'Não informado.',
+			recommendedDish:
+				params && params.recommendedDish ? params.recommendedDish : '',
+			linkRecommendedDish:
+				params && params.linkRecommendedDish ? params.linkRecommendedDish : ''
+		});
 	}
 
 	render() {
-		const { openWeather } = this.state;
-		if (!openWeather) {
-			return <SpinnerOverlay visible={true} />;
-		} else {
-			const { city, list } = openWeather;
-			const { name } = city;
-			let dateAndTime;
-			let date;
-			let time;
-			return (
+		const {
+			place,
+			lat,
+			lon,
+			weather,
+			descWeather,
+			recommendedDish,
+			linkRecommendedDish
+		} = this.state;
+		return (
+			<ScrollView style={styles.container}>
 				<View style={styles.wrapper}>
-					<FlatList
-						data={list}
-						keyExtractor={item => item.dt.toString()}
-						renderItem={({ item }) => {
-							dateAndTime = item.dt_txt.split(' ');
-							date = moment(dateAndTime[0]).format('DD/MM/YYYY');
-							time = dateAndTime[1].substring(0, 5);
-							return (
-								<CardItem
-									weather={Translate.weatherType(item.weather[0].main)}
-									where={name}
-									when={date}
-									whatTime={time}
-									keyId={item.dt.toString()}
-									onPress={() => {}}
-									// handleNaviagation={this.handleNaviagation}
-								/>
-							);
-						}}
-						showsVerticalScrollIndicator={false}
-					/>
+					<SpinnerOverlay visible={false} />
+					<View>
+						<View style={styles.wrapperInfo}>
+							<View>
+								<Text style={styles.rowBlackStyle}>{'Local'}</Text>
+							</View>
+							<Text style={styles.rowStyle}>{place}</Text>
+						</View>
+						<View style={styles.wrapperMap}>
+							{/*<Map
+								lat={lat.toString()}
+								long={long.toString()}
+								nearby={nearbyApartmentComplexes}
+								request={false}
+							/>*/}
+						</View>
+					</View>
+					<View style={styles.wrapperInfo}>
+						<View style={styles.wrapperDetails}>
+							<View>
+								<Text style={styles.rowBlackStyle}>{'Detalhes do clima'}</Text>
+							</View>
+							<Text
+								style={styles.rowStyle}
+								numberOfLines={2}
+								ellipsizeMode={'tail'}
+							>
+								{'Clima: ' + weather}
+							</Text>
+							<Text
+								style={styles.rowStyle}
+								numberOfLines={2}
+								ellipsizeMode={'tail'}
+							>
+								{'Mais informações: ' + descWeather}
+							</Text>
+							<View style={styles.marginBetweenRows}>
+								<Text style={styles.rowBlackStyle}>
+									{'Recomendação de prato para esse clima'}
+								</Text>
+								<View style={styles.wrapperFood}>
+									<Text
+										style={styles.rowFoodStyle}
+										numberOfLines={2}
+										ellipsizeMode={'tail'}
+									>
+										{recommendedDish + ' !'}
+									</Text>
+									<View style={styles.wrapperFoodImg}>
+										<Image
+											source={Translate.weatherImgRecommendedDish(weather)}
+											style={
+												recommendedDish === 'Sorvete'
+													? styles.foodIceStyle
+													: styles.foodStyle
+											}
+											resizeMode="stretch"
+										/>
+									</View>
+								</View>
+							</View>
+						</View>
+					</View>
 				</View>
-			);
-		}
+			</ScrollView>
+		);
 	}
 }
 
-export default WeatherScreen;
+export default WeatherDetailScreen;

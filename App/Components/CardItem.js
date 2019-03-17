@@ -32,17 +32,47 @@ class CardItem extends Component {
 					source={Translate.weatherImage(weather)}
 				/>
 				<View style={styles.wrapperInfo}>
-					<Text style={styles.optionTextStyle}>{'Clima: ' + weather}</Text>
-					<Text style={styles.optionTextStyle}>{'Onde: ' + where}</Text>
-					<Text style={styles.optionTextStyle}>{'Quando: ' + when}</Text>
-					<Text style={styles.optionTextStyle}>{'Que horas: ' + whatTime}</Text>
+					<Text
+						style={styles.optionTextStyle}
+						numberOfLines={1}
+						ellipsizeMode={'tail'}
+					>
+						{'Clima: ' + weather}
+					</Text>
+					<Text
+						style={styles.optionTextStyle}
+						numberOfLines={1}
+						ellipsizeMode={'tail'}
+					>
+						{'Onde: ' + where}
+					</Text>
+					<Text
+						style={styles.optionTextStyle}
+						numberOfLines={1}
+						ellipsizeMode={'tail'}
+					>
+						{'Quando: ' + when}
+					</Text>
+					<Text
+						style={styles.optionTextStyle}
+						numberOfLines={1}
+						ellipsizeMode={'tail'}
+					>
+						{'Que horas: ' + whatTime}
+					</Text>
 					<View style={styles.wrapperSeeMore}>
 						<TouchableOpacity
 							hitSlop={{ top: 10, left: 10, bottom: 10, right: 10 }}
 							onPress={() => onPress()}
 							key={keyId}
 						>
-							<Text style={styles.seeMoreStyle}>{'Ver mais '}</Text>
+							<Text
+								style={styles.seeMoreStyle}
+								numberOfLines={1}
+								ellipsizeMode={'tail'}
+							>
+								{'Ver mais '}
+							</Text>
 						</TouchableOpacity>
 					</View>
 				</View>

@@ -13,6 +13,7 @@ import InputScreen from '../Containers/InputScreen';
 import LoginScreen from '../Containers/LoginScreen';
 import WeatherScreen from '../Containers/WeatherScreen';
 import ProfileScreen from '../Containers/ProfileScreen';
+import WeatherDetailScreen from '../Containers/WeatherDetailScreen';
 
 import styles from './Styles/NavigationStyles';
 
@@ -62,7 +63,8 @@ const AppNavigation = StackNavigator(
 		TabRoot: { screen: TabNav },
 		Welcome: { screen: WelcomeScreen },
 		Input: { screen: InputScreen },
-		Login: { screen: LoginScreen }
+		Login: { screen: LoginScreen },
+		WeatherDetailScreen: { screen: WeatherDetailScreen }
 	},
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',

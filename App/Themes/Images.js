@@ -19,7 +19,11 @@ const images = {
 	logoRn: require('../Images/logo.png'),
 	emojiRain: require('../Images/img-emoji-cloud-with-rain.png'),
 	emojiClouds: require('../Images/img-emoji-cloud.png'),
-	emojiClear: require('../Images/img-emoji-sun.png')
+	emojiClear: require('../Images/img-emoji-sun.png'),
+	iconArrowLeftWhite: require('../Images/Icons/arrow-left-white.png'),
+	emojiHambuger: require('../Images/img-emoji-hamburger.png'),
+	emojiIceCream: require('../Images/img-emoji-ice-cream.png'),
+	emojiPizaa: require('../Images/img-emoji-pizza.png')
 };
 
 export default images;

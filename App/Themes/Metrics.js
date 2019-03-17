@@ -8,6 +8,9 @@ const vh = height / 100;
 const pw = width => width * vw; // percent width
 const ph = height => height * vh; // percent height
 
+const doubleCheck =
+	height >= 800 && height <= 820 ? ph(2) : height > 820 ? ph(5) : 0;
+
 const size = size => {
 	if (Platform.OS === 'ios') {
 		// console.tron.log('iOS - pixelRatio:', pixelRatio)
@@ -134,6 +137,16 @@ const metrics = {
 			}
 		})
 	},
+	headerTitleMargin: {
+		...Platform.select({
+			android: {
+				marginLeft: size(18)
+			}
+		})
+	},
+	wrapperHeaderLeft: {
+		marginLeft: size(16)
+	},
 	/**
 	 * exampleScreenMetrics
 	 */
@@ -174,6 +187,45 @@ const metrics = {
 			padding: size(16),
 			bottom: 0,
 			borderRadius: size(6)
+		}
+	},
+	/**
+	 * weatherDetailScreenMetrics
+	 */
+	weatherDetailScreenMetrics: {
+		marginBetweenRows: {
+			marginTop: size(10)
+		},
+		wrapperMap: {
+			marginTop: size(8),
+			// width: pw(88),
+			width: width,
+			height: size(130)
+		},
+		wrapperDetails: {
+			marginTop: doubleCheck
+		},
+		sectionTitle: {
+			marginTop: size(16),
+			marginBottom: size(5),
+			marginRight: size(20)
+		},
+		wrapperInfo: {
+			marginTop: size(20),
+			marginBottom: size(12),
+			marginLeft: size(20),
+			marginRight: size(20)
+		},
+		foodStyle: {
+			width: size(50),
+			height: size(50)
+		},
+		foodIceStyle: {
+			width: size(50),
+			height: size(80)
+		},
+		wrapperFoodImg: {
+			paddingLeft: size(10)
 		}
 	}
 };

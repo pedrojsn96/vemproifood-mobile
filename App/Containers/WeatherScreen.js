@@ -30,7 +30,11 @@ const baseURL =
 
 class WeatherScreen extends Component {
 	static navigationOptions = ({ navigation }) => ({
-		headerTitle: <Text style={styles.headerLabelStyle}>{'Clima'}</Text>,
+		headerTitle: (
+			<Text style={[styles.headerTitle, styles.headerTitleMargin]}>
+				{'Clima'}
+			</Text>
+		),
 		headerLeft: <View style={styles.wrapperHeaderLeft} />,
 		tabBarIcon: ({ focused }) => {
 			if (focused) {
@@ -172,11 +176,17 @@ class WeatherScreen extends Component {
 
 	render() {
 		const { openWeather, isRefreshing } = this.state;
+		const { navigation } = this.props;
+		const { navigate } = navigation;
 		if (!openWeather) {
-			return <SpinnerOverlay visible={true} />;
+			return (
+				<View style={styles.wrapper}>
+					<SpinnerOverlay visible={true} />
+				</View>
+			);
 		} else {
 			const { city, list } = openWeather;
-			const { name } = city;
+			const { name, coord } = city;
 			let dateAndTime;
 			let date;
 			let time;
@@ -196,7 +206,23 @@ class WeatherScreen extends Component {
 									when={date}
 									whatTime={time}
 									keyId={item.dt.toString()}
-									onPress={() => {}}
+									onPress={() =>
+										navigate('WeatherDetailScreen', {
+											place: name,
+											lat: coord.lat.toString(),
+											lon: coord.lon.toString(),
+											weather: Translate.weatherType(item.weather[0].main),
+											descWeather: Translate.weatherDesc(
+												item.weather[0].description
+											),
+											recommendedDish: Translate.weatherRecommendedDish(
+												item.weather[0].main
+											),
+											linkRecommendedDish: Translate.weatherLinkRecommendedDish(
+												item.weather[0].main
+											)
+										})
+									}
 								/>
 							);
 						}}

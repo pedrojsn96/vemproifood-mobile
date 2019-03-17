@@ -40,7 +40,10 @@ const colors = {
 	paleGrey_0_95: '#f7f8f8',
 	brownGrey: '#929292',
 	opacity: 'rgba(0, 0, 0, 0.35)',
-	white: '#fff'
+	white: '#fff',
+	blackGray: 'rgba(33, 49, 58, 0.9)',
+	dark: '#21313a',
+	lightNavy: '#154997'
 };
 
 export default colors;

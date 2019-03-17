@@ -1,52 +1,64 @@
 import { StyleSheet } from 'react-native';
-import { Metrics, ApplicationStyles } from '../../Themes';
+import { Metrics, ApplicationStyles, Colors, Fonts } from '../../Themes';
+
+const { weatherDetailScreenMetrics } = Metrics;
+const { weatherDetailScreenFonts } = Fonts.style;
 
 export default StyleSheet.create({
 	...ApplicationStyles.screen,
 	container: {
-		paddingBottom: Metrics.baseMargin
+		flex: 1,
+		backgroundColor: Colors.white
 	},
 	wrapper: {
-		width: '100%'
-		// marginTop: 8,
-		// marginBottom: 8
-	},
-	logo: {
-		marginTop: Metrics.doubleSection,
-		height: Metrics.images.logo,
-		width: Metrics.images.logo,
-		resizeMode: 'contain'
-	},
-	centered: {
-		alignItems: 'center'
-	},
-
-	iconHeader: {
-		height: 20,
-		width: 20
-	},
-	wrapperTabBarLabel: {
-		marginTop: 15
-	},
-	label: {
-		textAlign: 'center',
-		fontSize: 10
-	},
-	wrapperItem: {
 		flex: 1,
-		alignItems: 'flex-start',
-		justifyContent: 'flex-start',
-		margin: 16
+		backgroundColor: Colors.white
 	},
-	headerLabelStyle: {
-		fontSize: 18,
-		fontWeight: 'bold',
-		color: '#fff'
+	rowStyle: {
+		...weatherDetailScreenFonts.rowStyle,
+		color: Colors.blackGray
 	},
-	wrapperHeaderLeft: {
-		marginLeft: 16
+	rowFoodStyle: {
+		...weatherDetailScreenFonts.rowFoodStyle,
+		color: Colors.blackGray
 	},
-	wrapperHeaderRight: {
-		marginRight: 16
+	marginBetweenRows: {
+		...weatherDetailScreenMetrics.marginBetweenRows
+	},
+	rowBlackStyle: {
+		...weatherDetailScreenFonts.rowBlackStyle,
+		color: Colors.dark
+	},
+	wrapperMap: {
+		...weatherDetailScreenMetrics.wrapperMap
+	},
+	wrapperDetails: {
+		flex: 1,
+		...weatherDetailScreenMetrics.wrapperDetails
+	},
+	sectionTitle: {
+		...weatherDetailScreenMetrics.sectionTitle,
+		...weatherDetailScreenFonts.sectionTitle,
+		color: Colors.lightNavy
+	},
+	wrapperInfo: {
+		...weatherDetailScreenMetrics.wrapperInfo,
+		flex: 1
+	},
+	wrapperFood: {
+		...weatherDetailScreenMetrics.marginBetweenRows,
+		flex: 1,
+		flexDirection: 'row',
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	foodStyle: {
+		...weatherDetailScreenMetrics.foodStyle
+	},
+	foodIceStyle: {
+		...weatherDetailScreenMetrics.foodIceStyle
+	},
+	wrapperFoodImg: {
+		...weatherDetailScreenMetrics.wrapperFoodImg
 	}
 });

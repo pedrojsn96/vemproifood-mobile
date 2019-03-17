@@ -44,6 +44,16 @@ const ApplicationStyles = {
 			...Fonts.style.h2,
 			fontSize: 14,
 			color: Colors.text
+		},
+		headerTitle: {
+			...Fonts.style.headerTitle,
+			color: Colors.white
+		},
+		headerTitleMargin: {
+			...Metrics.headerTitleMargin
+		},
+		wrapperHeaderLeft: {
+			...Metrics.wrapperHeaderLeft
 		}
 	},
 	darkLabelContainer: {

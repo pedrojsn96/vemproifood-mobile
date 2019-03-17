@@ -90,11 +90,21 @@ const size = {
 };
 
 const style = {
+	headerTitle: {
+		fontFamily: type.avenir.heavy,
+		fontSize: size.h6
+	},
+	/**
+	 * exampleScreenFonts
+	 */
 	exampleScreenFonts: {
 		fontFamily: type.avenir.book,
 		fontSize: size.medium,
 		lineHeight: lineHeight(20)
 	},
+	/**
+	 * cardItemComponentFonts
+	 */
 	cardItemComponentFonts: {
 		optionTextStyle: {
 			fontFamily: type.avenir.book,
@@ -103,6 +113,28 @@ const style = {
 		seeMoreStyle: {
 			fontFamily: type.avenir.heavy,
 			fontSize: size.regular
+		}
+	},
+	/**
+	 * weatherDetailScreenFonts
+	 */
+	weatherDetailScreenFonts: {
+		rowStyle: {
+			fontFamily: type.avenir.roman,
+			fontSize: size.regular
+		},
+		rowFoodStyle: {
+			fontFamily: type.avenir.roman,
+			fontSize: size.h5
+		},
+		rowBlackStyle: {
+			fontFamily: type.avenir.heavy,
+			fontSize: size.h6,
+			lineHeight: lineHeight(25)
+		},
+		sectionTitle: {
+			fontFamily: type.avenir.heavy,
+			fontSize: size.regularMinus
 		}
 	}
 };
