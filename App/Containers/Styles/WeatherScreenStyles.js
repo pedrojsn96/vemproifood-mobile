@@ -6,6 +6,11 @@ export default StyleSheet.create({
 	container: {
 		paddingBottom: Metrics.baseMargin
 	},
+	wrapper: {
+		width: '100%'
+		// marginTop: 8,
+		// marginBottom: 8
+	},
 	logo: {
 		marginTop: Metrics.doubleSection,
 		height: Metrics.images.logo,

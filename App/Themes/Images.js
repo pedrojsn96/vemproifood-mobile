@@ -16,7 +16,10 @@ const images = {
 	eye: require('../Images/Icons/eye.png'),
 	eyeOff: require('../Images/Icons/eye-off.png'),
 	clear: require('../Images/Icons/clear.png'),
-	logoRn: require('../Images/logo.png')
+	logoRn: require('../Images/logo.png'),
+	emojiRain: require('../Images/img-emoji-cloud-with-rain.png'),
+	emojiClouds: require('../Images/img-emoji-cloud.png'),
+	emojiClear: require('../Images/img-emoji-sun.png')
 };
 
 export default images;

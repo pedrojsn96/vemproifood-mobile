@@ -8,8 +8,10 @@ import BottomModal from './BottomModal';
 import CenterModal from './CenterModal';
 import FullModal from './FullModal';
 import Icon from './Icon';
+import SpinnerOverlay from './SpinnerOverlay';
 
 export {
+	SpinnerOverlay,
 	Button,
 	Card,
 	CardSection,

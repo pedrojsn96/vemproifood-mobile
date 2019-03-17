@@ -38,7 +38,9 @@ const colors = {
 	grayAccent: '#676767',
 	tomatoRed: '#C12C2B',
 	paleGrey_0_95: '#f7f8f8',
-	brownGrey: '#929292'
+	brownGrey: '#929292',
+	opacity: 'rgba(0, 0, 0, 0.35)',
+	white: '#fff'
 };
 
 export default colors;

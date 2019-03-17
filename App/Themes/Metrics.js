@@ -156,6 +156,25 @@ const metrics = {
 				paddingTop: DeviceInfo.hasNotch() ? size(30) : size(20)
 			}
 		})
+	},
+	/**
+	 * cardItemComponentMetrics
+	 */
+	cardItemComponentMetrics: {
+		container: {
+			marginHorizontal: size(24),
+			marginVertical: size(8),
+			borderRadius: size(6),
+			height: size(160)
+		},
+		imageStyle: {
+			borderRadius: size(6)
+		},
+		wrapperInfo: {
+			padding: size(16),
+			bottom: 0,
+			borderRadius: size(6)
+		}
 	}
 };
 
