@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View, FlatList } from 'react-native';
+import {
+	ActivityIndicator,
+	Text,
+	Image,
+	View,
+	FlatList,
+	Platform
+} from 'react-native';
 
 // Themes
-import { Images } from '../Themes';
+import { Images, Colors } from '../Themes';
 
 // External Libs
 import axios from 'axios';
@@ -17,6 +24,9 @@ import { Translate } from '../Utils/';
 
 // Styles
 import styles from './Styles/WeatherScreenStyles';
+
+const baseURL =
+	'http://api.openweathermap.org/data/2.5/forecast?q=Campinas,br&appid=a67ef818d8c8e3945f7eee5f541c47e5';
 
 class WeatherScreen extends Component {
 	static navigationOptions = ({ navigation }) => ({
@@ -47,34 +57,121 @@ class WeatherScreen extends Component {
 		super(props);
 
 		this.state = {
-			openWeather: null
+			openWeather: null,
+			perPage: 10,
+			loading: false,
+			totalData: null,
+			isRefreshing: false
 		};
 	}
 
 	componentDidMount() {
-		this.loadData();
+		this.getTotalCnt();
 	}
+
+	/**
+	 * get the total cnt(total data) of the API data.
+	 * @author samuelmataraso
+	 * @method getTotalCnt
+	 * @return {state} totalData
+	 */
+	getTotalCnt = async () => {
+		await axios
+			.get(
+				'http://api.openweathermap.org/data/2.5/forecast?q=Campinas,br&appid=a67ef818d8c8e3945f7eee5f541c47e5'
+			)
+			.then(response => {
+				this.setState({
+					totalData: response.data.cnt
+				});
+				this.loadData();
+			});
+	};
 
 	/**
 	 * load the API data
 	 * @author samuelmataraso
 	 * @method loadData
-	 * @return state
+	 * @return {state} json
 	 */
 	loadData = async () => {
-		await axios
-			.get(
-				'http://api.openweathermap.org/data/2.5/forecast?q=Campinas,br&appid=a67ef818d8c8e3945f7eee5f541c47e5'
-			)
-			.then(response =>
+		const { perPage, loading, totalData, openWeather } = this.state;
+		if (loading) return;
+		if (!openWeather) {
+			this.setState({ loading: true });
+
+			const response = await fetch(`${baseURL}&cnt=${perPage}`);
+			const repositories = await JSON.parse(response._bodyText);
+
+			this.setState({
+				openWeather: repositories,
+				perPage: perPage + 10,
+				loading: false
+			});
+		} else {
+			if (openWeather.cnt < totalData) {
+				this.setState({ loading: true });
+
+				const response = await fetch(`${baseURL}&cnt=${perPage}`);
+				const repositories = await JSON.parse(response._bodyText);
+
 				this.setState({
-					openWeather: response.data
-				})
-			);
+					openWeather: repositories,
+					perPage: perPage + 10,
+					loading: false
+				});
+			} else {
+				return null;
+			}
+		}
+	};
+
+	/**
+	 * refresh the API data by Pull To Refresh
+	 * @author samuelmataraso
+	 * @method refresh
+	 * @return {state} json
+	 */
+	refresh = async () => {
+		await axios.get(`${baseURL}&cnt=${10}`).then(response => {
+			this.setState({
+				openWeather: response.data,
+				perPage: 10,
+				isRefreshing: false
+			});
+		});
+	};
+
+	/**
+	 * render the footer list with a spinner when onEndReached is started
+	 * @author samuelmataraso
+	 * @method renderFooter
+	 * @return {func} render
+	 */
+	renderFooter = () => {
+		const { loading } = this.state;
+		if (!loading) return null;
+		return (
+			<View
+				style={{
+					flex: 1,
+					alignItems: 'center',
+					justifyContent: 'center',
+					marginTop: 20,
+					marginBottom: 20
+				}}
+			>
+				{Platform.OS === 'android' ? (
+					<ActivityIndicator color={Colors.tomatoRed} />
+				) : (
+					<ActivityIndicator />
+				)}
+			</View>
+		);
 	};
 
 	render() {
-		const { openWeather } = this.state;
+		const { openWeather, isRefreshing } = this.state;
 		if (!openWeather) {
 			return <SpinnerOverlay visible={true} />;
 		} else {
@@ -100,11 +197,21 @@ class WeatherScreen extends Component {
 									whatTime={time}
 									keyId={item.dt.toString()}
 									onPress={() => {}}
-									// handleNaviagation={this.handleNaviagation}
 								/>
 							);
 						}}
 						showsVerticalScrollIndicator={false}
+						refreshing={isRefreshing}
+						onRefresh={() => {
+							this.setState({
+								isRefreshing: true
+							});
+							this.refresh();
+						}}
+						onEndReached={this.loadData}
+						onEndReachedThreshold={0.1}
+						ListFooterComponent={this.renderFooter()}
+						removeClippedSubviews={false}
 					/>
 				</View>
 			);
