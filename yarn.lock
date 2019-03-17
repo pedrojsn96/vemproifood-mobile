@@ -5286,6 +5286,11 @@ react-native-keyboard-aware-scroll-view@^0.6.0:
     prop-types "^15.6.0"
     react-native-iphone-x-helper "^1.0.1"
 
+react-native-location@^2.0.2:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-location/-/react-native-location-2.2.0.tgz#7eb1ce4be4a141035f87756ba08fe2e9b0b98134"
+  integrity sha512-1jgXB/2eiqbqr1qMhQBHosKHKk9PWbdNqxmUh+A6FetOBeJYutbp65xEAR8pr7Odg+x9yU2nfRiFl6fA+0BbEQ==
+
 react-native-material-textfield@^0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/react-native-material-textfield/-/react-native-material-textfield-0.12.0.tgz#3fba19d76ab89f67052c81e082152fc243d82a3f"

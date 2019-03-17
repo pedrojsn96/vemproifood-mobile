@@ -14,6 +14,7 @@ import { Images, Colors } from '../Themes';
 // External Libs
 import axios from 'axios';
 import moment from 'moment';
+import RNLocation from 'react-native-location';
 
 // Components
 import { CardItem } from '../Components/';
@@ -25,8 +26,7 @@ import { Translate } from '../Utils/';
 // Styles
 import styles from './Styles/WeatherScreenStyles';
 
-const baseURL =
-	'http://api.openweathermap.org/data/2.5/forecast?q=Campinas,br&appid=a67ef818d8c8e3945f7eee5f541c47e5';
+const baseURL = 'http://api.openweathermap.org/data/2.5/forecast?';
 
 class WeatherScreen extends Component {
 	static navigationOptions = ({ navigation }) => ({
@@ -59,18 +59,64 @@ class WeatherScreen extends Component {
 
 	constructor(props) {
 		super(props);
-
+		this.unsubscribeLocationWatcher = null;
 		this.state = {
 			openWeather: null,
 			perPage: 10,
 			loading: false,
 			totalData: null,
-			isRefreshing: false
+			isRefreshing: false,
+			requestingGeolocation: false,
+			lat: '',
+			lon: ''
 		};
 	}
 
 	componentDidMount() {
-		this.getTotalCnt();
+		this.init();
+	}
+
+	async init() {
+		const locationPermissionGranted = await this.askForLocation();
+		if (locationPermissionGranted) {
+			this.unsubscribeLocationWatcher = RNLocation.subscribeToLocationUpdates(
+				locations => {
+					this.setState({ requestingGeolocation: false });
+					const latitude = locations[0].latitude;
+					const longitude = locations[0].longitude;
+					if (latitude && longitude) {
+						this.setState({
+							lat: latitude.toString(),
+							lon: longitude.toString()
+						});
+						this.getTotalCnt();
+					} else {
+					}
+				}
+			);
+		} else {
+			this.setState({ requestingGeolocation: false });
+		}
+		this.unsubscribeLocationWatcher &&
+			setTimeout(() => {
+				this.unsubscribeLocationWatcher();
+			}, 3000);
+	}
+
+	async askForLocation() {
+		this.setState({ requestingGeolocation: true });
+		return RNLocation.requestPermission({
+			ios: 'whenInUse',
+			android: {
+				detail: 'fine',
+				rationale: {
+					title: 'Acessar sua localização',
+					message:
+						'Para exibir as informações climáticas, o Vem pro iFood gostaria de acessar sua localização.',
+					buttonPositive: 'OK'
+				}
+			}
+		});
 	}
 
 	/**
@@ -80,12 +126,20 @@ class WeatherScreen extends Component {
 	 * @return {state} totalData
 	 */
 	getTotalCnt = async () => {
-		await axios.get(baseURL).then(response => {
-			this.setState({
-				totalData: response.data.cnt
+		const { lat, lon } = this.state;
+		await axios
+			.get(
+				`${baseURL}lat=${lat}&lon=${lon}&appid=a67ef818d8c8e3945f7eee5f541c47e5`
+			)
+			.then(response => {
+				this.setState({
+					totalData: response.data.cnt
+				});
+				this.loadData();
+			})
+			.catch(error => {
+				console.log('error lol', error);
 			});
-			this.loadData();
-		});
 	};
 
 	/**
@@ -95,14 +149,15 @@ class WeatherScreen extends Component {
 	 * @return {state} json
 	 */
 	loadData = async () => {
-		const { perPage, loading, totalData, openWeather } = this.state;
+		const { perPage, loading, totalData, openWeather, lat, lon } = this.state;
 		if (loading) return;
 		if (!openWeather) {
 			this.setState({ loading: true });
 
-			const response = await fetch(`${baseURL}&cnt=${perPage}`);
+			const response = await fetch(
+				`${baseURL}lat=${lat}&lon=${lon}&cnt=${perPage}&appid=a67ef818d8c8e3945f7eee5f541c47e5`
+			);
 			const repositories = await JSON.parse(response._bodyText);
-
 			this.setState({
 				openWeather: repositories,
 				perPage: perPage + 10,
@@ -112,7 +167,9 @@ class WeatherScreen extends Component {
 			if (openWeather.cnt < totalData) {
 				this.setState({ loading: true });
 
-				const response = await fetch(`${baseURL}&cnt=${perPage}`);
+				const response = await fetch(
+					`${baseURL}lat=${lat}&lon=${lon}&cnt=${perPage}&appid=a67ef818d8c8e3945f7eee5f541c47e5`
+				);
 				const repositories = await JSON.parse(response._bodyText);
 
 				this.setState({
@@ -133,13 +190,18 @@ class WeatherScreen extends Component {
 	 * @return {state} json
 	 */
 	refresh = async () => {
-		await axios.get(`${baseURL}&cnt=${10}`).then(response => {
-			this.setState({
-				openWeather: response.data,
-				perPage: 10,
-				isRefreshing: false
+		const { lat, lon } = this.state;
+		await axios
+			.get(
+				`${baseURL}lat=${lat}&lon=${lon}&cnt=${10}&appid=a67ef818d8c8e3945f7eee5f541c47e5`
+			)
+			.then(response => {
+				this.setState({
+					openWeather: response.data,
+					perPage: 10,
+					isRefreshing: false
+				});
 			});
-		});
 	};
 
 	/**
