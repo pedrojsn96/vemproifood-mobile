@@ -11,24 +11,31 @@ import AboutScreen from '../Containers/AboutScreen';
 import WelcomeScreen from '../Containers/WelcomeScreen';
 import InputScreen from '../Containers/InputScreen';
 import LoginScreen from '../Containers/LoginScreen';
+import WeatherScreen from '../Containers/WeatherScreen';
+import ProfileScreen from '../Containers/ProfileScreen';
+
+import styles from './Styles/NavigationStyles';
 
 const TabNav = TabNavigator(
 	{
-		LaunchScreenTab: {
-			screen: LaunchScreen
+		WeatherScreenTab: {
+			screen: WeatherScreen,
+			navigationOptions: {
+				title: 'Clima'
+			}
 		},
-		ExampleScreenTab: {
-			screen: ExampleScreen
-		},
-		AboutScreenTab: {
-			screen: AboutScreen
+		ProfilecreenTab: {
+			screen: ProfileScreen,
+			navigationOptions: {
+				title: 'Perfil'
+			}
 		}
 	},
 	{
 		tabBarPosition: 'bottom',
 		animationEnabled: false,
 		swipeEnabled: false,
-		initialRouteName: 'ExampleScreenTab',
+		initialRouteName: 'WeatherScreenTab',
 		tabBarOptions: {
 			showLabel: true,
 			showIcon: true,
@@ -36,8 +43,6 @@ const TabNav = TabNavigator(
 				backgroundColor: '#fff'
 			},
 			tabStyle: {
-				borderTopWidth: 1,
-				borderTopColor: '#ececec',
 				flex: 1
 			},
 			labelStyle: {
@@ -61,11 +66,11 @@ const AppNavigation = StackNavigator(
 	},
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',
-		initialRouteName: 'Login',
+		initialRouteName: 'TabRoot',
 		/* The header config from HomeScreen is now here */
 		navigationOptions: {
 			headerStyle: {
-				backgroundColor: Colors.purpleAccent
+				backgroundColor: Colors.tomatoRed
 			},
 			headerTitleStyle: {
 				fontWeight: 'bold'

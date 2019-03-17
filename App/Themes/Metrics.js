@@ -119,6 +119,21 @@ const metrics = {
 		large: 60,
 		logo: 200
 	},
+	tabBarLabel: {
+		paddingLeft: size(2)
+	},
+	tabBar: {
+		...Platform.select({
+			ios: {
+				paddingTop: size(8),
+				height: size(52)
+			},
+			android: {
+				paddingTop: size(8),
+				height: size(52)
+			}
+		})
+	},
 	/**
 	 * exampleScreenMetrics
 	 */

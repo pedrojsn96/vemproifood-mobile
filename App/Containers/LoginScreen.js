@@ -210,7 +210,7 @@ class LoginScreen extends Component {
 					<View style={styles.keyboardNotAccess}>
 						<TouchableOpacity
 							style={styles.buttonRegistered}
-							onPress={() => navigation.navigate('ExampleScreenTab')}
+							onPress={() => navigation.navigate('HomeScreenTab')}
 						>
 							<Text style={styles.buttonRegisteredLabel}>
 								{'Entrar'.toUpperCase()}
