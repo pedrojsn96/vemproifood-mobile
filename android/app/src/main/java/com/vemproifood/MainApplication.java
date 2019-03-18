@@ -3,6 +3,8 @@ package com.vemproifood;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
+import com.airbnb.android.react.maps.MapsPackage;
 import com.github.reactnativecommunity.location.RNLocationPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
@@ -27,6 +29,9 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          // new FBSDKPackage(mCallbackManager)
+            // new FBSDKPackage(),
+            new MapsPackage(),
             new RNLocationPackage(),
             new RNDeviceInfo(),
             new RNI18nPackage(),
