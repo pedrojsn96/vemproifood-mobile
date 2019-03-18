@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import {
 	ActivityIndicator,
 	Text,
@@ -6,7 +6,9 @@ import {
 	View,
 	FlatList,
 	Platform,
-	TouchableOpacity
+	TouchableOpacity,
+	SafeAreaView,
+	StatusBar
 } from 'react-native';
 
 // Themes
@@ -335,56 +337,84 @@ class WeatherScreen extends Component {
 		let date;
 		let time;
 		return (
-			<View style={styles.wrapper}>
-				<FlatList
-					data={list}
-					keyExtractor={item => item.dt.toString()}
-					renderItem={({ item }) => {
-						dateAndTime = item.dt_txt.split(' ');
-						date = moment(dateAndTime[0]).format('DD/MM/YYYY');
-						time = dateAndTime[1].substring(0, 5);
-						return (
-							<CardItem
-								weather={Translate.weatherType(item.weather[0].main)}
-								where={name}
-								when={date}
-								whatTime={time}
-								keyId={item.dt.toString()}
-								onPress={() =>
-									navigate('WeatherDetailScreen', {
-										place: name,
-										lat: coord.lat.toString(),
-										lon: coord.lon.toString(),
-										weather: Translate.weatherType(item.weather[0].main),
-										descWeather: Translate.weatherDesc(
-											item.weather[0].description
-										),
-										recommendedDish: Translate.weatherRecommendedDish(
-											item.weather[0].main
-										),
-										linkRecommendedDish: Translate.weatherLinkRecommendedDish(
-											item.weather[0].main
-										)
-									})
-								}
-							/>
-						);
-					}}
-					showsVerticalScrollIndicator={false}
-					refreshing={isRefreshing}
-					onRefresh={() => {
-						this.setState({
-							isRefreshing: true
-						});
-						this.refresh();
-					}}
-					onEndReached={this.loadData}
-					onEndReachedThreshold={0.1}
-					ListFooterComponent={this.renderFooter()}
-					removeClippedSubviews={false}
-				/>
-			</View>
+			<Fragment>
+				<SafeAreaView style={{ flex: 0, backgroundColor: Colors.tomatoRed }} />
+				<SafeAreaView style={{ flex: 1, backgroundColor: Colors.white }}>
+					{this._handlerStatusBar()}
+					<View style={styles.wrapper}>
+						<FlatList
+							data={list}
+							keyExtractor={item => item.dt.toString()}
+							renderItem={({ item }) => {
+								dateAndTime = item.dt_txt.split(' ');
+								date = moment(dateAndTime[0]).format('DD/MM/YYYY');
+								time = dateAndTime[1].substring(0, 5);
+								return (
+									<CardItem
+										weather={Translate.weatherType(item.weather[0].main)}
+										where={name}
+										when={date}
+										whatTime={time}
+										keyId={item.dt.toString()}
+										onPress={() =>
+											navigate('WeatherDetailScreen', {
+												place: name,
+												lat: coord.lat.toString(),
+												lon: coord.lon.toString(),
+												weather: Translate.weatherType(item.weather[0].main),
+												descWeather: Translate.weatherDesc(
+													item.weather[0].description
+												),
+												recommendedDish: Translate.weatherRecommendedDish(
+													item.weather[0].main
+												),
+												linkRecommendedDish: Translate.weatherLinkRecommendedDish(
+													item.weather[0].main
+												)
+											})
+										}
+									/>
+								);
+							}}
+							showsVerticalScrollIndicator={false}
+							refreshing={isRefreshing}
+							onRefresh={() => {
+								this.setState({
+									isRefreshing: true
+								});
+								this.refresh();
+							}}
+							onEndReached={this.loadData}
+							onEndReachedThreshold={0.1}
+							ListFooterComponent={this.renderFooter()}
+							removeClippedSubviews={false}
+						/>
+					</View>
+				</SafeAreaView>
+			</Fragment>
 		);
+	};
+
+	_handlerStatusBar = () => {
+		if (Platform.OS === 'ios') {
+			return <StatusBar barStyle="light-content" />;
+		} else {
+			if (Platform.Version <= 22) {
+				return (
+					<StatusBar
+						barStyle="light-content"
+						backgroundColor={Colors.tomatoRed}
+					/>
+				);
+			} else {
+				return (
+					<StatusBar
+						barStyle="light-content"
+						backgroundColor={Colors.tomatoRed}
+					/>
+				);
+			}
+		}
 	};
 
 	render() {
