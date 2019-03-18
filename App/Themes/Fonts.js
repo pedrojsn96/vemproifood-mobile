@@ -145,6 +145,23 @@ const style = {
 			fontFamily: type.avenir.heavy,
 			fontSize: size.medium
 		}
+	},
+	/**
+	 * weatherScreenFonts
+	 */
+	weatherScreenFonts: {
+		placesBlankStateButtonText: {
+			fontFamily: type.avenir.medium,
+			fontSize: size.medium
+		},
+		blankStatePlacesText: {
+			fontFamily: type.avenir.book,
+			fontSize: size.regular
+		},
+		blankStatePlacesTextAccent: {
+			fontFamily: type.avenir.heavy,
+			fontSize: size.regular
+		}
 	}
 };
 

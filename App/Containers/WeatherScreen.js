@@ -5,7 +5,8 @@ import {
 	Image,
 	View,
 	FlatList,
-	Platform
+	Platform,
+	TouchableOpacity
 } from 'react-native';
 
 // Themes
@@ -101,7 +102,10 @@ class WeatherScreen extends Component {
 				}
 			);
 		} else {
-			this.setState({ requestingGeolocation: false });
+			this.setState({
+				requestingGeolocation: false,
+				openWeather: 'requestPermissionDenied'
+			});
 		}
 		this.unsubscribeLocationWatcher &&
 			setTimeout(() => {
@@ -244,76 +248,139 @@ class WeatherScreen extends Component {
 		);
 	};
 
-	render() {
+	/**
+	 * render the startting loading
+	 * @author samuelmataraso
+	 * @method _renderLoading
+	 * @return {func} render
+	 */
+	_renderLoading = () => {
+		return (
+			<View style={styles.wrapper}>
+				<LoadingSpinner
+					text="Carregando Informações"
+					backgroundColor={Colors.white}
+				/>
+			</View>
+		);
+	};
+
+	/**
+	 * render when the user denied the geolocation permission
+	 * @author samuelmataraso
+	 * @method _renderRequestPermissionDenied
+	 * @return {func} render
+	 */
+	_renderRequestPermissionDenied = () => {
+		return (
+			<View style={styles.wrapper}>
+				<View style={styles.blankStateContainer}>
+					<Image
+						style={styles.blankStatePlacesImage}
+						source={Images.cloudError}
+					/>
+					<View style={styles.blankStatePlacesTextContainer}>
+						<Text style={styles.blankStatePlacesText}>{'Ops!'}</Text>
+						<View style={styles.blankStatePlacesTextLine2}>
+							<Text style={styles.blankStatePlacesText}>
+								{'E neceesário aceitar a permissão de localizaçao'}
+							</Text>
+							<TouchableOpacity
+								onPress={() => {
+									this.setState({
+										openWeather: null
+									});
+									this.init();
+								}}
+							>
+								<Text style={styles.blankStatePlacesTextAccent}>
+									{'tente novamente.'}
+								</Text>
+							</TouchableOpacity>
+						</View>
+					</View>
+					<View style={styles.blankStateButton} />
+				</View>
+			</View>
+		);
+	};
+
+	/**
+	 * render the weather list when the geolocation permission is accepted
+	 * @author samuelmataraso
+	 * @method _renderWeatherList
+	 * @return {func} render
+	 */
+	_renderWeatherList = () => {
 		const { openWeather, isRefreshing } = this.state;
 		const { navigation } = this.props;
 		const { navigate } = navigation;
+		const { city, list } = openWeather;
+		const { name, coord } = city;
+		let dateAndTime;
+		let date;
+		let time;
+		return (
+			<View style={styles.wrapper}>
+				<FlatList
+					data={list}
+					keyExtractor={item => item.dt.toString()}
+					renderItem={({ item }) => {
+						dateAndTime = item.dt_txt.split(' ');
+						date = moment(dateAndTime[0]).format('DD/MM/YYYY');
+						time = dateAndTime[1].substring(0, 5);
+						return (
+							<CardItem
+								weather={Translate.weatherType(item.weather[0].main)}
+								where={name}
+								when={date}
+								whatTime={time}
+								keyId={item.dt.toString()}
+								onPress={() =>
+									navigate('WeatherDetailScreen', {
+										place: name,
+										lat: coord.lat.toString(),
+										lon: coord.lon.toString(),
+										weather: Translate.weatherType(item.weather[0].main),
+										descWeather: Translate.weatherDesc(
+											item.weather[0].description
+										),
+										recommendedDish: Translate.weatherRecommendedDish(
+											item.weather[0].main
+										),
+										linkRecommendedDish: Translate.weatherLinkRecommendedDish(
+											item.weather[0].main
+										)
+									})
+								}
+							/>
+						);
+					}}
+					showsVerticalScrollIndicator={false}
+					refreshing={isRefreshing}
+					onRefresh={() => {
+						this.setState({
+							isRefreshing: true
+						});
+						this.refresh();
+					}}
+					onEndReached={this.loadData}
+					onEndReachedThreshold={0.1}
+					ListFooterComponent={this.renderFooter()}
+					removeClippedSubviews={false}
+				/>
+			</View>
+		);
+	};
+
+	render() {
+		const { openWeather } = this.state;
 		if (!openWeather) {
-			return (
-				<View style={styles.wrapper}>
-					<LoadingSpinner
-						text="Carregando Informações"
-						backgroundColor={Colors.white}
-					/>
-				</View>
-			);
+			return this._renderLoading();
+		} else if (openWeather === 'requestPermissionDenied') {
+			return this._renderRequestPermissionDenied();
 		} else {
-			const { city, list } = openWeather;
-			const { name, coord } = city;
-			let dateAndTime;
-			let date;
-			let time;
-			return (
-				<View style={styles.wrapper}>
-					<FlatList
-						data={list}
-						keyExtractor={item => item.dt.toString()}
-						renderItem={({ item }) => {
-							dateAndTime = item.dt_txt.split(' ');
-							date = moment(dateAndTime[0]).format('DD/MM/YYYY');
-							time = dateAndTime[1].substring(0, 5);
-							return (
-								<CardItem
-									weather={Translate.weatherType(item.weather[0].main)}
-									where={name}
-									when={date}
-									whatTime={time}
-									keyId={item.dt.toString()}
-									onPress={() =>
-										navigate('WeatherDetailScreen', {
-											place: name,
-											lat: coord.lat.toString(),
-											lon: coord.lon.toString(),
-											weather: Translate.weatherType(item.weather[0].main),
-											descWeather: Translate.weatherDesc(
-												item.weather[0].description
-											),
-											recommendedDish: Translate.weatherRecommendedDish(
-												item.weather[0].main
-											),
-											linkRecommendedDish: Translate.weatherLinkRecommendedDish(
-												item.weather[0].main
-											)
-										})
-									}
-								/>
-							);
-						}}
-						showsVerticalScrollIndicator={false}
-						refreshing={isRefreshing}
-						onRefresh={() => {
-							this.setState({
-								isRefreshing: true
-							});
-							this.refresh();
-						}}
-						onEndReached={this.loadData}
-						onEndReachedThreshold={0.1}
-						ListFooterComponent={this.renderFooter()}
-						removeClippedSubviews={false}
-					/>
-				</View>
-			);
+			return this._renderWeatherList();
 		}
 	}
 }

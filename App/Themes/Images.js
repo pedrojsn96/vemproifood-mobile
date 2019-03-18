@@ -23,7 +23,8 @@ const images = {
 	iconArrowLeftWhite: require('../Images/Icons/arrow-left-white.png'),
 	emojiHambuger: require('../Images/img-emoji-hamburger.png'),
 	emojiIceCream: require('../Images/img-emoji-ice-cream.png'),
-	emojiPizaa: require('../Images/img-emoji-pizza.png')
+	emojiPizaa: require('../Images/img-emoji-pizza.png'),
+	cloudError: require('../Images/img-cloud-error.png')
 };
 
 export default images;

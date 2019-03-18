@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { Metrics, ApplicationStyles, Colors } from '../../Themes';
+import { Metrics, ApplicationStyles, Colors, Fonts } from '../../Themes';
+
+const { weatherScreenMetrics } = Metrics;
+const { weatherScreenFonts } = Fonts.style;
 
 export default StyleSheet.create({
 	...ApplicationStyles.screen,
@@ -47,5 +50,44 @@ export default StyleSheet.create({
 	},
 	wrapperHeaderRight: {
 		marginRight: 16
+	},
+	blankStateContainer: {
+		...weatherScreenMetrics.blankStatePlacesContainer,
+		alignItems: 'center',
+		display: 'flex',
+		flex: 1,
+		justifyContent: 'center'
+	},
+	blankStatePlacesImage: {
+		...weatherScreenMetrics.blankStatePlacesImage,
+		resizeMode: 'contain'
+	},
+	blankStatePlacesTextContainer: {
+		...weatherScreenMetrics.blankStatePlacesTextContainer
+	},
+	blankStatePlacesTextLine2: {
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
+	},
+	blankStatePlacesText: {
+		...weatherScreenFonts.blankStatePlacesText,
+		...weatherScreenMetrics.blankStatePlacesText,
+		color: Colors.brownGrey,
+		textAlign: 'center'
+	},
+	blankStatePlacesTextAccent: {
+		...weatherScreenFonts.blankStatePlacesTextAccent,
+		color: Colors.ceruleanBlue
+	},
+	blankStateButton: {
+		...weatherScreenMetrics.blankStateButton,
+		alignItems: 'center',
+		display: 'flex',
+		justifyContent: 'center'
+	},
+	blankStateButtonText: {
+		...weatherScreenFonts.placesBlankStateButtonText,
+		color: Colors.white
 	}
 });

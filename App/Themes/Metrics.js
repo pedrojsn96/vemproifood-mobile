@@ -246,6 +246,34 @@ const metrics = {
 			height: size(45),
 			width: pw(75)
 		}
+	},
+	/**
+	 *weatherScreenMetrics
+	 */
+	weatherScreenMetrics: {
+		blankStatePlacesContainer: {
+			paddingRight: size(24),
+			paddingLeft: size(24),
+			paddingTop: size(52)
+		},
+		blankStateButton: {
+			height: size(40),
+			width: pw(68.8),
+			borderRadius: size(20),
+			marginBottom: size(100)
+		},
+		blankStatePlacesImage: {
+			height: size(88),
+			width: size(88)
+		},
+		blankStatePlacesTextContainer: {
+			paddingBottom: size(21),
+			paddingTop: size(21)
+		},
+		blankStatePlacesTextContainer: {
+			paddingBottom: size(21),
+			paddingTop: size(21)
+		}
 	}
 };
 
