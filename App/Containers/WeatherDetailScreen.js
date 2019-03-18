@@ -9,7 +9,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 // Components
-import { CardItem } from '../Components/';
+import { Map } from '../Components/';
 import { SpinnerOverlay, Button } from '../Components/Common';
 
 // Utils
@@ -104,12 +104,15 @@ class WeatherDetailScreen extends Component {
 							<Text style={styles.rowStyle}>{place}</Text>
 						</View>
 						<View style={styles.wrapperMap}>
-							{/*<Map
-								lat={lat.toString()}
-								long={long.toString()}
-								nearby={nearbyApartmentComplexes}
-								request={false}
-							/>*/}
+							{
+								<Map
+									lat={lat.toString()}
+									long={lon.toString()}
+									request={false}
+									place={place}
+									weather={weather}
+								/>
+							}
 						</View>
 					</View>
 					<View style={styles.wrapperInfo}>

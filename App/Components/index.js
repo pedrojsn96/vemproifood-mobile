@@ -1,3 +1,4 @@
 import CardItem from './CardItem';
+import Map from './Map';
 
-export { CardItem };
+export { CardItem, Map };

@@ -113,7 +113,6 @@ class WeatherScreen extends Component {
 							lon: longitude.toString()
 						});
 						this.getTotalCnt();
-					} else {
 					}
 				}
 			);
@@ -170,7 +169,7 @@ class WeatherScreen extends Component {
 				this.loadData();
 			})
 			.catch(error => {
-				console.log('error lol', error);
+				console.log('error', error);
 			});
 	};
 

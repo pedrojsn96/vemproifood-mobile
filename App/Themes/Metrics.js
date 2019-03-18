@@ -274,6 +274,17 @@ const metrics = {
 			paddingBottom: size(21),
 			paddingTop: size(21)
 		}
+	},
+	/**
+	 *mapComponentMetrics
+	 */
+	mapComponentMetrics: {
+		mapContainer: {
+			height: ph(21.1),
+			borderRadius: size(2),
+			shadowRadius: size(4),
+			marginBottom: size(2)
+		}
 	}
 };
 
