@@ -42,7 +42,7 @@ class WeatherScreen extends Component {
 				return (
 					<Image
 						style={styles.iconHeader}
-						source={Images.iconRadarActive}
+						source={Images.iconCloudOn}
 						resizeMode={'contain'}
 					/>
 				);
@@ -50,12 +50,26 @@ class WeatherScreen extends Component {
 				return (
 					<Image
 						style={styles.iconHeader}
-						source={Images.iconRadarInactive}
+						source={Images.iconCloudOff}
 						resizeMode={'contain'}
 					/>
 				);
 			}
-		}
+		},
+		tabBarLabel: ({ focused }) => (
+			<View style={Platform.OS === 'ios' ? styles.wrapperTabBarLabel : {}}>
+				<Text
+					style={[
+						styles.label,
+						{
+							color: focused ? Colors.tomatoRed : Colors.brownGrey
+						}
+					]}
+				>
+					{'Clima'}
+				</Text>
+			</View>
+		)
 	});
 
 	constructor(props) {

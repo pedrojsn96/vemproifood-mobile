@@ -24,8 +24,8 @@ export default StyleSheet.create({
 	},
 
 	iconHeader: {
-		height: 20,
-		width: 20
+		height: 25,
+		width: 25
 	},
 	wrapperTabBarLabel: {
 		marginTop: 15

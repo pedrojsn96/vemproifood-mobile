@@ -24,7 +24,11 @@ const images = {
 	emojiHambuger: require('../Images/img-emoji-hamburger.png'),
 	emojiIceCream: require('../Images/img-emoji-ice-cream.png'),
 	emojiPizaa: require('../Images/img-emoji-pizza.png'),
-	cloudError: require('../Images/img-cloud-error.png')
+	cloudError: require('../Images/img-cloud-error.png'),
+	iconCloudOn: require('../Images/Icons/icon-cloud-on.png'),
+	iconProfileUserOn: require('../Images/Icons/icon-profile-user-on.png'),
+	iconCloudOff: require('../Images/Icons/icon-cloud-off.png'),
+	iconProfileUserOff: require('../Images/Icons/icon-profile-user-off.png')
 };
 
 export default images;
