@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native';
 import { Images } from '../Themes';
+import FacebookService from '../Services/FacebookService';
 
 // Styles
 import styles from './Styles/WelcomeScreenStyles';
@@ -76,7 +77,9 @@ class WelcomeScreen extends Component {
 						<Image source={Images.launch} style={styles.logo} />
 					</View>
 
-					<View style={styles.section} />
+					<View style={styles.section}>
+						<View>{FacebookService.makeLoginButton(accessToken => {})}</View>
+					</View>
 				</ScrollView>
 			</View>
 		);
