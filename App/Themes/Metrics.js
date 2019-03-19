@@ -310,6 +310,14 @@ const metrics = {
 		wrapperEmail: {
 			marginTop: size(10)
 		}
+	},
+	/**
+	 *welcomeScreenMetrics
+	 */
+	welcomeScreenMetrics: {
+		wrapperButton: {
+			marginTop: size(40)
+		}
 	}
 };
 

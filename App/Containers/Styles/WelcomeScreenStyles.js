@@ -1,10 +1,25 @@
 import { StyleSheet } from 'react-native';
-import { Metrics, ApplicationStyles } from '../../Themes/';
+import { Metrics, ApplicationStyles, Colors } from '../../Themes/';
+
+const { welcomeScreenMetrics } = Metrics;
 
 export default StyleSheet.create({
 	...ApplicationStyles.screen,
 	container: {
-		paddingBottom: Metrics.baseMargin
+		paddingBottom: Metrics.baseMargin,
+		backgroundColor: Colors.white
+	},
+	content: {
+		flex: 1,
+		backgroundColor: Colors.white,
+		alignItems: 'center',
+		justifyContent: 'center'
+	},
+	wrapperButton: {
+		...welcomeScreenMetrics.wrapperButton,
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center'
 	},
 	logo: {
 		marginTop: Metrics.doubleSection,

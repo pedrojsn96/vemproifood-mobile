@@ -28,7 +28,8 @@ const images = {
 	iconCloudOn: require('../Images/Icons/icon-cloud-on.png'),
 	iconProfileUserOn: require('../Images/Icons/icon-profile-user-on.png'),
 	iconCloudOff: require('../Images/Icons/icon-cloud-off.png'),
-	iconProfileUserOff: require('../Images/Icons/icon-profile-user-off.png')
+	iconProfileUserOff: require('../Images/Icons/icon-profile-user-off.png'),
+	ifood: require('../Images/logo-ifood-app.png')
 };
 
 export default images;
