@@ -5,12 +5,7 @@ import { StackNavigator, TabNavigator } from 'react-navigation';
 
 import { Colors } from '../Themes';
 
-import LaunchScreen from '../Containers/LaunchScreen';
-import ExampleScreen from '../Containers/ExampleScreen';
-import AboutScreen from '../Containers/AboutScreen';
 import WelcomeScreen from '../Containers/WelcomeScreen';
-import InputScreen from '../Containers/InputScreen';
-import LoginScreen from '../Containers/LoginScreen';
 import WeatherScreen from '../Containers/WeatherScreen';
 import ProfileScreen from '../Containers/ProfileScreen';
 import WeatherDetailScreen from '../Containers/WeatherDetailScreen';
@@ -63,9 +58,7 @@ const AppNavigation = StackNavigator(
 	{
 		TabRoot: { screen: TabNav },
 		Welcome: { screen: WelcomeScreen },
-		Input: { screen: InputScreen },
 		Auth: { screen: AuthLoadingScreen },
-		Login: { screen: LoginScreen },
 		WeatherDetailScreen: { screen: WeatherDetailScreen }
 	},
 	{
