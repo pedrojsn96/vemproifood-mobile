@@ -18,6 +18,10 @@ export default StyleSheet.create({
 		...weatherDetailScreenFonts.rowStyle,
 		color: Colors.blackGray
 	},
+	iconHeader: {
+		height: 25,
+		width: 25
+	},
 	rowFoodStyle: {
 		...weatherDetailScreenFonts.rowFoodStyle,
 		color: Colors.blackGray
@@ -69,5 +73,8 @@ export default StyleSheet.create({
 	},
 	buttonIfoodStyle: {
 		...weatherDetailScreenMetrics.buttonIfoodStyle
+	},
+	wrapperHeaderRight: {
+		marginRight: 16
 	}
 });

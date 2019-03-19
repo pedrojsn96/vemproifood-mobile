@@ -137,6 +137,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-share')
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
     implementation project(':react-native-fbsdk')

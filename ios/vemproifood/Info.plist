@@ -23,10 +23,10 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
-		<key>CFBundleURLSchemes</key>
-		<array>
-			<string>fb163694151251183</string>
-		</array>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb163694151251183</string>
+			</array>
 		</dict>
 	</array>
 	<key>FacebookAppID</key>

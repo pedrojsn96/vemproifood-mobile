@@ -22,7 +22,6 @@ export default StyleSheet.create({
 	centered: {
 		alignItems: 'center'
 	},
-
 	iconHeader: {
 		height: 25,
 		width: 25

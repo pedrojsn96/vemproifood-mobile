@@ -7,6 +7,7 @@ import { Images } from '../Themes';
 // External Libs
 import axios from 'axios';
 import moment from 'moment';
+import Share from 'react-native-share';
 
 // Components
 import { Map } from '../Components/';
@@ -39,7 +40,11 @@ class WeatherDetailScreen extends Component {
 					resizeMode={'contain'}
 				/>
 			</TouchableOpacity>
-		)
+		),
+		headerRight:
+			navigation.state.params && navigation.state.params.headerRight
+				? navigation.state.params.headerRight
+				: null
 	});
 
 	constructor(props) {
@@ -60,6 +65,20 @@ class WeatherDetailScreen extends Component {
 		const { navigation } = this.props;
 		const { state } = navigation;
 		const { params } = state;
+		const place = params && params.place ? params.place : 'Não informado.';
+		const weather =
+			params && params.weather ? params.weather : 'Não informado.';
+		const recommendedDish =
+			params && params.recommendedDish ? params.recommendedDish : '';
+		const linkRecommendedDish =
+			params && params.linkRecommendedDish ? params.linkRecommendedDish : '';
+
+		this._renderShareModal(
+			place,
+			weather,
+			recommendedDish,
+			linkRecommendedDish
+		);
 		this.setState({
 			loading: true
 		});
@@ -81,6 +100,50 @@ class WeatherDetailScreen extends Component {
 				params && params.linkRecommendedDish ? params.linkRecommendedDish : ''
 		});
 	}
+
+	/**
+	 * Render the Share Modal
+	 * @author samuelmataraso
+	 * @method _renderShareModal
+	 * @param  place - string
+	 * @param weather - string
+	 * @param recommendedDish - string
+	 * @param linkRecommendedDish - string
+	 * @return json
+	 */
+	_renderShareModal = (
+		place,
+		weather,
+		recommendedDish,
+		linkRecommendedDish
+	) => {
+		const { navigation } = this.props;
+		let shareOptions = {
+			title: 'Vem pro iFood nesse Clima!',
+			message: `Hey!, hoje por aqui (${place}), está com um clima ${weather}. \nAcho que seria uma boa nesse clima comer um ${recommendedDish}. \nSimbora pedir no iFood ;D? \n`,
+			url: 'Link: ' + linkRecommendedDish,
+			subject: 'Vem pro iFood nesse Clima!',
+			failOnCancel: false
+		};
+
+		navigation.setParams({
+			headerRight: (
+				<TouchableOpacity
+					style={styles.wrapperHeaderRight}
+					hitSlop={{ top: 10, left: 10, bottom: 10, right: 10 }}
+					onPress={() => {
+						Share.open(shareOptions);
+					}}
+				>
+					<Image
+						style={styles.iconHeader}
+						source={Images.iconSocialShare}
+						resizeMode={'contain'}
+					/>
+				</TouchableOpacity>
+			)
+		});
+	};
 
 	render() {
 		const {
@@ -163,7 +226,9 @@ class WeatherDetailScreen extends Component {
 									<Button
 										buttonLabel={'Comprar no iFood'}
 										buttonStyle={styles.buttonIfoodStyle}
-										onPress={() => {}}
+										onPress={() => {
+											// Share.open(shareOptions);
+										}}
 									/>
 								</View>
 							</View>
