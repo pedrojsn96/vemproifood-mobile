@@ -18,6 +18,7 @@ import { Images, Colors } from '../Themes';
 import axios from 'axios';
 import moment from 'moment';
 import RNLocation from 'react-native-location';
+import OneSignal from 'react-native-onesignal';
 
 // Components
 import { CardItem } from '../Components/';
@@ -76,6 +77,10 @@ class WeatherScreen extends Component {
 
 	constructor(props) {
 		super(props);
+		OneSignal.init('8dde699e-71a8-4590-8f2a-1b35e41a906f');
+		OneSignal.addEventListener('received', this.onReceived);
+		OneSignal.addEventListener('opened', this.onOpened);
+		OneSignal.addEventListener('ids', this.onIds);
 		this.unsubscribeLocationWatcher = null;
 		this.state = {
 			openWeather: null,
@@ -91,6 +96,27 @@ class WeatherScreen extends Component {
 
 	componentDidMount() {
 		this.init();
+	}
+
+	componentWillUnmount() {
+		OneSignal.removeEventListener('received', this.onReceived);
+		OneSignal.removeEventListener('opened', this.onOpened);
+		OneSignal.removeEventListener('ids', this.onIds);
+	}
+
+	onReceived(notification) {
+		console.log('Notification received: ', notification);
+	}
+
+	onOpened(openResult) {
+		console.log('Message: ', openResult.notification.payload.body);
+		console.log('Data: ', openResult.notification.payload.additionalData);
+		console.log('isActive: ', openResult.notification.isAppInFocus);
+		console.log('openResult: ', openResult);
+	}
+
+	onIds(device) {
+		console.log('Device info: ', device);
 	}
 
 	/**

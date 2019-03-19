@@ -1,3 +1,13 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/'}
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.10.0, 0.99.99]'
+    }
+}
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
 apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
@@ -106,6 +116,8 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
+        manifestPlaceholders = [onesignal_app_id: "8dde699e-71a8-4590-8f2a-1b35e41a906f",
+        onesignal_google_project_number: "REMOTE"]
     }
     splits {
         abi {
@@ -137,6 +149,7 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-onesignal')
     implementation project(':react-native-share')
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.facebook.android:facebook-android-sdk:4.34.0'
