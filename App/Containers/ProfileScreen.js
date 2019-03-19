@@ -5,9 +5,18 @@ import {
 	Image,
 	View,
 	TouchableOpacity,
-	Platform
+	Platform,
+	AsyncStorage
 } from 'react-native';
+
+// Themes
 import { Images, Colors } from '../Themes';
+
+// External Libs
+import FacebookService from '../Services/FacebookService';
+
+// Components
+import { LoadingSpinner } from '../Components/Common';
 
 // Styles
 import styles from './Styles/ProfileScreenStyles';
@@ -54,10 +63,67 @@ class ProfileScreen extends Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {};
+		this.state = {
+			profile: null
+		};
 	}
 
+	componentDidMount() {
+		this.loadData();
+	}
+
+	/**
+	 * Read the data of phoneStorage by AsyncStorage.
+	 * @author samuelmataraso
+	 * @method loadData
+	 * @param none
+	 * @return json
+	 */
+	async loadData() {
+		const profileAS = await AsyncStorage.getItem('fb');
+		this.setState({
+			profile: JSON.parse(profileAS)
+		});
+	}
+
+	/**
+	 * Handle the user logout of app.
+	 * @author samuelmataraso
+	 * @method _handleLogout
+	 * @param none
+	 * @return func
+	 */
+	_handleLogout = () => {
+		AsyncStorage.clear();
+		this.props.navigation.navigate('Auth');
+	};
+
+	/**
+	 * render the startting loading
+	 * @author samuelmataraso
+	 * @method _renderLoading
+	 * @return {func} render
+	 */
+	_renderLoading = () => {
+		return (
+			<View style={styles.wrapper}>
+				<LoadingSpinner
+					text="Carregando Informações"
+					backgroundColor={Colors.white}
+				/>
+			</View>
+		);
+	};
+
 	render() {
+		const { profile } = this.state;
+		if (!profile) {
+			return this._renderLoading();
+		}
+		const profileName =
+			profile && profile.name ? profile.name : 'User Name Not Found';
+		const profileAvatar =
+			profile && profile.picture.data.url ? profile.picture.data.url : null;
 		return (
 			<View style={styles.mainContainer}>
 				<Image
@@ -70,7 +136,13 @@ class ProfileScreen extends Component {
 						<Image source={Images.launch} style={styles.logo} />
 					</View>
 
-					<View style={styles.section} />
+					<View style={styles.section}>
+						<View style={{ marginTop: 20 }}>
+							{FacebookService.makeLogoutButton(accessToken => {
+								this._handleLogout();
+							})}
+						</View>
+					</View>
 				</ScrollView>
 			</View>
 		);

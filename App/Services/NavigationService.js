@@ -3,7 +3,7 @@ import { NavigationActions } from 'react-navigation';
 let _navigator;
 
 /**
- * Set the top level screen to AppNavigation on RootCOntainer.
+ * Set the top level screen to AppNavigation on RootContainer.
  * @author samuelmataraso
  * @method setTopLevelNavigator
  * @param object navigatorRef

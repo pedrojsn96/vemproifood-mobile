@@ -14,6 +14,7 @@ import LoginScreen from '../Containers/LoginScreen';
 import WeatherScreen from '../Containers/WeatherScreen';
 import ProfileScreen from '../Containers/ProfileScreen';
 import WeatherDetailScreen from '../Containers/WeatherDetailScreen';
+import AuthLoadingScreen from '../Containers/AuthLoadingScreen';
 
 import styles from './Styles/NavigationStyles';
 
@@ -57,12 +58,13 @@ const AppNavigation = StackNavigator(
 		TabRoot: { screen: TabNav },
 		Welcome: { screen: WelcomeScreen },
 		Input: { screen: InputScreen },
+		Auth: { screen: AuthLoadingScreen },
 		Login: { screen: LoginScreen },
 		WeatherDetailScreen: { screen: WeatherDetailScreen }
 	},
 	{
 		headerMode: Platform.OS === 'ios' ? 'float' : 'screen',
-		initialRouteName: 'Welcome',
+		initialRouteName: 'Auth',
 		/* The header config from HomeScreen is now here */
 		navigationOptions: {
 			headerStyle: {

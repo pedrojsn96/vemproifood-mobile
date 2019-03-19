@@ -18,7 +18,7 @@ import {
  */
 _handleSave = async data => {
 	await AsyncStorage.setItem('fb', JSON.stringify(data));
-	NavigationService.navigate('Loading');
+	NavigationService.navigate('Auth');
 };
 
 /**
