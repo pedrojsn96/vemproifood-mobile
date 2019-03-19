@@ -93,7 +93,7 @@ class WeatherDetailScreen extends Component {
 			loading
 		} = this.state;
 		return (
-			<ScrollView style={styles.container}>
+			<ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
 				<View style={styles.wrapper}>
 					<SpinnerOverlay visible={loading} />
 					<View>

@@ -120,24 +120,28 @@ class ProfileScreen extends Component {
 		if (!profile) {
 			return this._renderLoading();
 		}
-		const profileName =
-			profile && profile.name ? profile.name : 'User Name Not Found';
+		const profileName = profile && profile.name ? profile.name : '';
+		const profileEmail = profile && profile.email ? profile.email : '';
 		const profileAvatar =
 			profile && profile.picture.data.url ? profile.picture.data.url : null;
 		return (
 			<View style={styles.mainContainer}>
-				<Image
-					source={Images.background}
-					style={styles.backgroundImage}
-					resizeMode="stretch"
-				/>
-				<ScrollView style={styles.container}>
-					<View style={styles.centered}>
-						<Image source={Images.launch} style={styles.logo} />
-					</View>
-
-					<View style={styles.section}>
-						<View style={{ marginTop: 20 }}>
+				<ScrollView
+					style={styles.container}
+					showsVerticalScrollIndicator={false}
+				>
+					<View style={styles.header} />
+					<Image source={{ uri: profileAvatar }} style={styles.avatarContent} />
+					<View style={styles.bodyContent}>
+						{profileName && (
+							<Text style={styles.textNameStyle}>{profileName}</Text>
+						)}
+						{profileEmail && (
+							<View style={styles.wrapperEmail}>
+								<Text style={styles.textEmailStyle}>{profileEmail}</Text>
+							</View>
+						)}
+						<View style={styles.logoutContent}>
 							{FacebookService.makeLogoutButton(accessToken => {
 								this._handleLogout();
 							})}

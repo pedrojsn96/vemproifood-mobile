@@ -21,10 +21,16 @@ import styles from './Styles/NavigationStyles';
 const TabNav = TabNavigator(
 	{
 		WeatherScreenTab: {
-			screen: WeatherScreen
+			screen: WeatherScreen,
+			navigationOptions: {
+				headerStyle: styles.headerStyle
+			}
 		},
 		ProfilecreenTab: {
-			screen: ProfileScreen
+			screen: ProfileScreen,
+			navigationOptions: {
+				headerStyle: styles.headerStyle
+			}
 		}
 	},
 	{

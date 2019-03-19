@@ -18,7 +18,8 @@ export default StyleSheet.create({
 	},
 	headerStyle: {
 		backgroundColor: Colors.bloodOrange,
-		elevation: 2
+		elevation: 2,
+		borderBottomColor: 'transparent'
 	},
 	tabBarItemImage: {
 		resizeMode: 'contain'

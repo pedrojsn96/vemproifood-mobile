@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { Metrics, ApplicationStyles } from '../../Themes/';
+import { Metrics, ApplicationStyles, Colors, Fonts } from '../../Themes/';
+
+const { profileScreenMetrics } = Metrics;
+const { profileScreenFonts } = Fonts.style;
 
 export default StyleSheet.create({
 	...ApplicationStyles.screen,
@@ -43,5 +46,38 @@ export default StyleSheet.create({
 	},
 	wrapperHeaderRight: {
 		marginRight: 16
+	},
+	//
+	header: {
+		...profileScreenMetrics.header,
+		backgroundColor: Colors.tomatoRed
+	},
+	avatarContent: {
+		...profileScreenMetrics.avatarContent,
+		alignSelf: 'center',
+		position: 'absolute',
+		borderColor: Colors.white
+	},
+	bodyContent: {
+		...profileScreenMetrics.bodyContent,
+		flex: 1,
+		alignItems: 'center'
+	},
+	textNameStyle: {
+		...profileScreenFonts.textNameStyle,
+		color: Colors.dark
+	},
+	wrapperEmail: {
+		...profileScreenMetrics.wrapperEmail
+	},
+	textEmailStyle: {
+		...profileScreenFonts.textEmailStyle,
+		color: Colors.brownGrey
+	},
+	logoutContent: {
+		...profileScreenMetrics.logoutContent
+	},
+	centered: {
+		alignItems: 'center'
 	}
 });

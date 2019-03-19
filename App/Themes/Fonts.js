@@ -162,6 +162,19 @@ const style = {
 			fontFamily: type.avenir.heavy,
 			fontSize: size.regular
 		}
+	},
+	/**
+	 * profileScreenFonts
+	 */
+	profileScreenFonts: {
+		textNameStyle: {
+			fontFamily: type.avenir.heavy,
+			fontSize: size.h5
+		},
+		textEmailStyle: {
+			fontFamily: type.avenir.book,
+			fontSize: size.mediumMinus
+		}
 	}
 };
 

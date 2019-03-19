@@ -285,6 +285,31 @@ const metrics = {
 			shadowRadius: size(4),
 			marginBottom: size(2)
 		}
+	},
+	/**
+	 *profileScreenMetrics
+	 */
+	profileScreenMetrics: {
+		header: {
+			height: ph(25)
+		},
+		avatarContent: {
+			width: size(130),
+			height: size(130),
+			borderRadius: size(63),
+			borderWidth: size(4),
+			top: ph(12)
+		},
+		bodyContent: {
+			padding: size(30),
+			marginTop: size(80)
+		},
+		logoutContent: {
+			marginTop: size(50)
+		},
+		wrapperEmail: {
+			marginTop: size(10)
+		}
 	}
 };
 
