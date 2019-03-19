@@ -39,7 +39,7 @@ class AuthLoadingScreen extends Component {
 	componentWillMount() {
 		this.isLoggedIn()
 			.then(LoggedIn => {
-				this.props.navigation.navigate(LoggedIn ? 'TabRoot' : 'Welcome');
+				this.props.navigation.navigate(LoggedIn ? 'TabRoot' : 'LoginScreen');
 			})
 			.catch(() => {
 				console.log('error on auth loading');
