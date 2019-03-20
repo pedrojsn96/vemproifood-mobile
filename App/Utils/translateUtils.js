@@ -91,13 +91,13 @@ export const weatherImgRecommendedDish = str => {
 export const weatherLinkRecommendedDish = str => {
 	switch (str) {
 		case 'Rain':
-			return 'https://www.ifood.com.br/busca?q=Pizza';
+			return 'https://www.ifood.com.br/lista-restaurantes';
 			break;
 		case 'Clouds':
-			return 'https://www.ifood.com.br/busca?q=Hamb%C3%BArguer';
+			return 'https://www.ifood.com.br/lista-restaurantes';
 			break;
 		case 'Clear':
-			return 'https://www.ifood.com.br/busca?q=Sorvete';
+			return 'https://www.ifood.com.br/lista-restaurantes';
 			break;
 		default:
 			return null;
