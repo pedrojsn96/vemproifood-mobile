@@ -60,7 +60,7 @@ yarn 💜
 
 ### Porque não foi feito o Deeplink para o iFood 🤔?
 
-Entendo sim oq seria um Deeplink, no caso aqui deveria ser feito, quando ele clica-se no botão <b>Comprar no iFood</b>, ele deveria abrir o app do iFood, porem, como informado tentei usar o nickname do Deeplink informado <b>ifood://</b>, porem não obtive sucesso, acredito que para abrir de app (RN) para outro app, ele precisa de mais algum parâmetro, pois quando eu manda pelo, ele chegava no browser como <b>ifood//</b>, sem o <b>:</b> no caso, então, resolvi focar nos demais extras. Porem, no click do botão de
+Entendo sim o que seria um Deeplink, no caso aqui deveria ser feito, quando ele clica-se no botão <b>Comprar no iFood</b>, ele deveria abrir o app do iFood, porem, como informado tentei usar o nickname do Deeplink informado <b>ifood://</b>, porem não obtive sucesso, acredito que para abrir de app (RN) para outro app, ele precisa de mais algum parâmetro, pois quando eu manda pelo, ele chegava no browser como <b>ifood//</b>, sem o <b>:</b> no caso, então, resolvi focar nos demais extras. Porem, no click do botão de
 <b>Comprar no iFood</b> coloquei ele para abrir a pagina web do iFood na rota [lista-restaurantes](https://www.ifood.com.br/lista-restaurantes) que já ajuda, embora não seja o ideal, pois não seria um real Deeplink, ao meu ver, é melhor do que nada.
 
 ### Notificação APENAS no Android, Porque 🤔?
@@ -111,7 +111,7 @@ Depois da atualização do XCode 10, pode-se dizer que o comando `react-native l
 `6 -` Depois de selecionado essas subAbas, va na barra de busca abaixo das subAbas e procure por `framework search` <br/>
 `7 -` Depois de procurado e achado,na linha do nome `Framework Search Paths`, click na linha abaixo da coluna com nome `vemproifood` <br/>
 `8 -` Ao clicar, será aberto uma janelinha, nela provavelmente vai ter uma linha desse modo ou parecido: `~/Documents/FacebookSDK`, se não tiver, tudo bem, se tiver, click nessa linha e troque `~/Documents/FacebookSDK` por `$(HOME)/Documents/FacebookSDK` e caso não tenha, apenas adicione essa linha `$(HOME)/Documents/FacebookSDK` <br/>
-`9 -` Feito esse processo, vamos fazer esse mesmo processo feito agora, so que no arquivo `RCTFBSDK.xcodeproj`, que fica na pasta `Libraries`, vc ve essa pasta no menu esquero, uma pasta amarela com esse nome, abre ela e vc achara o arquivo xcodeproj do fbdk, achando ele, click nele. <br/>
+`9 -` Feito esse processo, vamos fazer esse mesmo processo feito agora, so que no arquivo `RCTFBSDK.xcodeproj`, que fica na pasta `Libraries`, você ve essa pasta no menu esquero, uma pasta amarela com esse nome, abre ela e você achara o arquivo xcodeproj do fbdk, achando ele, click nele. <br/>
 `10 -` Achou ele ? Clicou nele ? faça novamente os passos 4 á 8. <br/>
 `11 -` Feito isso, já estará tudo salvo. <br/>
 
@@ -131,6 +131,8 @@ Depois de todo esse processo pra <b>Android 🤖</b> e principalmente <b>iOS �
 
 Me segue no Twitter: [@samuelmataraso](https://twitter.com/samuelmataraso) <br/>
 Acesse meu Site: [samuelmataraso.com](https://samuelmataraso.com)
+
+> Nota: Meu Site não é virús, pode entrar sem medo 😅.
 
 <a href="samuelmataraso.com" target="_blank">
 <img src="https://twitter.com/samuelmataraso/profile_image?size=original" height="100" /></a>
