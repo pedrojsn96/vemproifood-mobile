@@ -121,7 +121,7 @@ Depois de todo esse processo pra <b>Android 🤖</b> e principalmente <b>iOS �
 
 <br/>
 
-> Nota: Problemas? Vamos fazer juntos então o/ samuelmataraso@gmail.com.
+> Nota: Problemas? Vamos fazer juntos então 😄! samuelmataraso@gmail.com 📧.
 
 <br/>
 
