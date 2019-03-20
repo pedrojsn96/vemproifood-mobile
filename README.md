@@ -33,6 +33,7 @@ Se chegar até aqui foi muito fácil temos alguns desafios extras para vocês:
 <b>------------------------------------------------------------------------------------------------------------------------------------------------</b>
 <br/>
 <br/>
+
 ### DEV Notes
 
 O desafio e seus extras pontos, tirando o Deeplink, foram feitos. \n Abaixo irei falar sobre alguns pontos quanto ao DEV dessa desafio.
