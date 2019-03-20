@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import { ScrollView, Text, Image, View, TouchableOpacity } from 'react-native';
+import {
+	ScrollView,
+	Text,
+	Image,
+	View,
+	TouchableOpacity,
+	Linking
+} from 'react-native';
 
 // Themes
 import { Images } from '../Themes';
@@ -145,6 +152,10 @@ class WeatherDetailScreen extends Component {
 		});
 	};
 
+	_openURL = url => {
+		Linking.openURL(url);
+	};
+
 	render() {
 		const {
 			place,
@@ -227,7 +238,7 @@ class WeatherDetailScreen extends Component {
 										buttonLabel={'Comprar no iFood'}
 										buttonStyle={styles.buttonIfoodStyle}
 										onPress={() => {
-											// Share.open(shareOptions);
+											this._openURL(linkRecommendedDish);
 										}}
 									/>
 								</View>
