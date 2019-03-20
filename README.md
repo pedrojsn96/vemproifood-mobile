@@ -76,8 +76,8 @@ Resumindo, Notificações apenas no Android, pois nele consigo de forma free \o/
 
 ## Libs usadas
 
-- [React Native Device Info](https://github.com/react-native-community/react-native-device-info) > Nota: Para pegar algmas informações do device em uso (Ex: hasNotch = iPhone X +++)
-- [React Native FBSDK](https://github.com/facebook/react-native-fbsdk) > Nota: Para conseguir o login com o facebokk #RedeSocial
+- [React Native Device Info](https://github.com/react-native-community/react-native-device-info) > Nota: Para pegar algumas informações do device em uso (Ex: hasNotch = iPhone X +++)
+- [React Native FBSDK](https://github.com/facebook/react-native-fbsdk) > Nota: Para conseguir o login com o facebook #RedeSocial
 - [React Native Location](https://github.com/timfpark/react-native-location#readme) > Nota: Para pegar a localização do Usuário
 - [React Native Maps](https://github.com/react-native-community/react-native-maps) > Nota: Para fazer uso do mapa
 - [React Native OneSignal](https://github.com/geektimecoil/react-native-onesignal) > Nota: PushNotification
