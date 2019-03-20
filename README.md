@@ -38,6 +38,18 @@ Se chegar até aqui foi muito fácil temos alguns desafios extras para vocês:
 
 O desafio e seus extras pontos, tirando o Deeplink, foram feitos. \n Abaixo irei falar sobre alguns pontos quanto ao DEV dessa desafio.
 
+<!-- show case/gif section -->
+<p align="center">
+    <img alt="Vem Pro iFood - 1.gif" height="620" src="https://media.giphy.com/media/1n6CPnzLrDDe8sRfgR/giphy.gif" />
+    <img alt="Vem Pro iFood - 2.gif" height="620" src="https://media.giphy.com/media/9SIr8v6rwOMA0DmmR0/giphy.gif" />
+    <img alt="Vem Pro iFood - 3.gif" height="620" src="https://media.giphy.com/media/dAEgGJsEzceG4Sd3bn/giphy.gif" />
+    <img alt="Vem Pro iFood - 4.gif" height="620" src="https://media.giphy.com/media/QmGNEwbZRvzFuMcSY1/giphy.gif" />
+    <img alt="Vem Pro iFood - 5.gif" height="620" src="https://media.giphy.com/media/7w54BznpstmQPajwjx/giphy.gif" />
+    <img alt="Vem Pro iFood - 6.gif" height="620" src="https://media.giphy.com/media/7OX5kAEJNJOKnFGhQt/giphy.gif" />
+    <img alt="Vem Pro iFood - 7.gif" height="620" src="https://media.giphy.com/media/1QjCLJoORXj3m6OCqR/giphy.gif" />
+</p>
+<!-- show case/gif section END -->
+
 ### Versão do node usada 🤔?
 
 8.11.3
