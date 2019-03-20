@@ -120,8 +120,8 @@ class ProfileScreen extends Component {
 		if (!profile) {
 			return this._renderLoading();
 		}
-		const profileName = profile && profile.name ? profile.name : '';
-		const profileEmail = profile && profile.email ? profile.email : '';
+		const profileName = profile && profile.name ? profile.name : null;
+		const profileEmail = profile && profile.email ? profile.email : null;
 		const profileAvatar =
 			profile && profile.picture.data.url ? profile.picture.data.url : null;
 		return (
@@ -131,7 +131,12 @@ class ProfileScreen extends Component {
 					showsVerticalScrollIndicator={false}
 				>
 					<View style={styles.header} />
-					<Image source={{ uri: profileAvatar }} style={styles.avatarContent} />
+					<Image
+						source={
+							profileAvatar ? { uri: profileAvatar } : Images.iconPlaceholder
+						}
+						style={styles.avatarContent}
+					/>
 					<View style={styles.bodyContent}>
 						{profileName && (
 							<Text style={styles.textNameStyle}>{profileName}</Text>
