@@ -132,8 +132,6 @@ Depois de todo esse processo pra <b>Android 🤖</b> e principalmente <b>iOS �
 Me segue no Twitter: [@samuelmataraso](https://twitter.com/samuelmataraso) <br/>
 Acesse meu Site: http://samuelmataraso.com
 
-> Nota: Meu Site não é virús, pode entrar sem medo 😅.
-
 <a href="samuelmataraso.com" target="_blank">
 <img src="https://twitter.com/samuelmataraso/profile_image?size=original" height="100" /></a>
 
