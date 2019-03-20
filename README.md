@@ -32,7 +32,7 @@ Se chegar até aqui foi muito fácil temos alguns desafios extras para vocês:
 <br/>
 <b>------------------------------------------------------------------------------------------------------------------------------------------------</b>
 <br/>
-
+<br/>
 ### DEV Notes
 
 O desafio e seus extras pontos, tirando o Deeplink, foram feitos. \n Abaixo irei falar sobre alguns pontos quanto ao DEV dessa desafio.
@@ -115,7 +115,7 @@ Depois de todo esse processo pra <b>Android 🤖</b> e principalmente <b>iOS �
 Me segue no Twitter: [@samuelmataraso](https://twitter.com/samuelmataraso) <br/>
 Acesse meu Site: [samuelmataraso.com](https://samuelmataraso.com)
 
-<a href="https://twitter.com/samuelmataraso" target="_blank">
+<a href="http://samuelmataraso.com/" target="_blank">
 <img src="https://twitter.com/samuelmataraso/profile_image?size=original" height="100" /></a>
 
 <!-- about me  END -->
