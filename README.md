@@ -130,7 +130,7 @@ Depois de todo esse processo pra <b>Android 🤖</b> e principalmente <b>iOS �
 ## About me @Dev
 
 Me segue no Twitter: [@samuelmataraso](https://twitter.com/samuelmataraso) <br/>
-Acesse meu Site: [samuelmataraso.com](https://samuelmataraso.com)
+Acesse meu Site: samuelmataraso.com
 
 > Nota: Meu Site não é virús, pode entrar sem medo 😅.
 
