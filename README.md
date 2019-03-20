@@ -128,7 +128,7 @@ Depois de todo esse processo pra <b>Android ğŸ¤–</b> e principalmente <b>iOS ğŸ
 Me segue no Twitter: [@samuelmataraso](https://twitter.com/samuelmataraso) <br/>
 Acesse meu Site: [samuelmataraso.com](https://samuelmataraso.com)
 
-<a href="http://samuelmataraso.com/" target="_blank">
+<a href="samuelmataraso.com" target="_blank">
 <img src="https://twitter.com/samuelmataraso/profile_image?size=original" height="100" /></a>
 
 <!-- about me  END -->
