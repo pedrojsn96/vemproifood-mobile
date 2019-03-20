@@ -119,6 +119,8 @@ Depois de todo esse processo pra <b>Android 🤖</b> e principalmente <b>iOS �
 
 - `react-native run-ios` ou `react-native run-android`
 
+> Nota: Problemas? Vamos fazer juntos então o/ samuelmataraso@gmail.com.
+
 <br/>
 
 <!-- about me -->
