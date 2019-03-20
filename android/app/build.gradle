@@ -119,6 +119,16 @@ android {
         manifestPlaceholders = [onesignal_app_id: "8dde699e-71a8-4590-8f2a-1b35e41a906f",
         onesignal_google_project_number: "REMOTE"]
     }
+    signingConfigs {
+        release {
+            // if (project.hasProperty('VEMPROIFOOD_RELEASE_STORE_FILE')) {
+                storeFile file("/Users/samuelmataraso/workspace/stuffs/hacka/vemproifood-mobile/android/app/vemproifood-key.keystore")
+                storePassword "bemind2018"
+                keyAlias "vemproifood-key-alias"
+                keyPassword "bemind2018"
+            // }
+        }
+    }
     splits {
         abi {
             reset()
@@ -131,6 +141,7 @@ android {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.release
         }
     }
     // applicationVariants are e.g. debug, release
