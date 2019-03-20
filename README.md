@@ -30,12 +30,11 @@ Se chegar até aqui foi muito fácil temos alguns desafios extras para vocês:
 - Compartilhamento
 
 <br/>
-
+<b>------------------------------------------------------------------------------------------------------------------------------------------------</b>
+<br/>
 ### DEV Notes
 
 O desafio e seus extras pontos, tirando o Deeplink, foram feitos. \n Abaixo irei falar sobre alguns pontos quanto ao DEV dessa desafio.
-
-<br/>
 
 ### Versão do node usada 🤔?
 
@@ -73,7 +72,7 @@ Resumindo, Notificações apenas no Android, pois nele consigo de forma free \o/
 
 <br/>
 
-### Rodando o projwto localmente
+### Rodando o projeto localmente
 
 - `git clone https://github.com/samuelmataraso/vemproifood-mobile.git`
 - `yarn`
