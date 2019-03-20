@@ -152,6 +152,13 @@ class WeatherDetailScreen extends Component {
 		});
 	};
 
+	/**
+	 * open the url to native browser
+	 * @author samuelmataraso
+	 * @method _openURL
+	 * @param  url - string
+	 * @return func
+	 */
 	_openURL = url => {
 		Linking.openURL(url);
 	};
